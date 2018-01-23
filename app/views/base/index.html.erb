@@ -1,2 +1,9 @@
-<h1>Base#index</h1>
-<p>Find me in app/views/base/index.html.erb</p>
+<h1>Base page</h1>
+  <% if user_signed_in? %>
+    <p> You are currently logged in as <%= current_user %></p>
+    <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+  <% else %>
+    <%= link_to('Login', new_user_session_path) %>
+    <%= link_to('Sign up', new_user_registration_path) %>
+  <% end %>
+
