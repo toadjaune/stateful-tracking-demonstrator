@@ -1,24 +1,15 @@
-# README
+# Installation instructions
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+For now, it is pretty straightforward :
 
-Things you may want to cover:
+* Install ruby
+  * The current version number is in `.ruby-version`
+  * You can either use your distribution package manager, or a ruby version manager such as rbenv
+* Install dependencies
+  * sqlite development libraries
+* `gem install bundler`
+* `bundle install`
 
-* Ruby version
+# Handy commands
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* `rails server`
