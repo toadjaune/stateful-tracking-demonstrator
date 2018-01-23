@@ -12,4 +12,5 @@ For now, it is pretty straightforward :
 
 # Handy commands
 
-* `rails server`
+* `rails server` : Start a local development server
+* `rails db:migrate` : Run this whenever there's a new db migration
