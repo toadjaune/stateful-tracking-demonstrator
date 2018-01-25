@@ -1,0 +1,16 @@
+<h1> List of tracking methods </h1>
+
+<table>
+  <tr>
+    <th> Tracking method </th>
+    <th> Working ? </th>
+    <th> Set at : </th>
+  </tr>
+  <% @methods.each do |method,content| %>
+    <tr>
+      <td> <%= method %> </td>
+      <td> <%= content %> </td>
+    </tr>
+  <% end %>
+</table>
+
