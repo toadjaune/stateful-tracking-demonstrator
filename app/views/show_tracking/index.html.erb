@@ -8,10 +8,11 @@
     <th> Working ? </th>
     <th> Set at : </th>
   </tr>
-  <% @methods.each do |method,content| %>
+  <% @methods.each do |key,method| %>
     <tr>
-      <td> <%= method %> </td>
-      <td> <%= content %> </td>
+      <td> <%= method[:name] %> </td>
+      <td> <%= method[:worked] %> </td>
+      <td> <%= method[:created_at] %> </td>
     </tr>
   <% end %>
 </table>

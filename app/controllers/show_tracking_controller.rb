@@ -8,10 +8,13 @@ class ShowTrackingController < ApplicationController
     @methods = {}
 
     # 1st-party cookie
-    if cookies[:tracker]
-      @methods[:first_party_cookie] = true
+    @methods[:first_party_cookie][:name] = 'First party Cookie'
+    first_party_cookie = FirstPartyCookie.find_by(token: cookies[:tracker])
+    if first_party_cookie
+      @methods[:first_party_cookie][:worked]      = true
+      @methods[:first_party_cookie][:created_at]  = first_party_cookie.created_at
     else
-      @methods[:first_party_cookie] = false
+      @methods[:first_party_cookie][:worked]      = false
     end
 
   end

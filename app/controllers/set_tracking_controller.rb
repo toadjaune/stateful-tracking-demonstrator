@@ -9,7 +9,7 @@ class SetTrackingController < ApplicationController
     response.set_header('X-cat', 'Meow')
 
     # 1st-party cookie, never expiring
-    cookies.permanent[:tracker] = 'a'
-    #response.set_header('Set-Cookie', 'a=b')
+    first_party_cookie = FirstPartyCookie.create(user: current_user)
+    cookies.permanent[:tracker] = first_party_cookie.token
   end
 end
