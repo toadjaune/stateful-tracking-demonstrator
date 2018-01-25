@@ -1,4 +1,7 @@
 class SetTrackingController < ApplicationController
+  # Make sure the user is logged in
+  before_action :authenticate_user!
+
   def index
     # We're going to set up every tracking method we possibly can
 
