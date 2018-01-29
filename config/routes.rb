@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'set_tracking',   to: 'set_tracking#index'
-  get 'show_tracking',  to: 'show_tracking#index'
+  get 'set_tracking',     to: 'set_tracking#index'
+  post 'set_tracking',    to: 'set_tracking#create'
+  get 'show_tracking',    to: 'show_tracking#index'
 
   devise_for :users
   root 'base#index'

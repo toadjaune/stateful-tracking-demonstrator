@@ -1,2 +1,26 @@
-<h1>SetTracking#index</h1>
-<p>Find me in app/views/set_tracking/index.html.erb</p>
+<h1> Let's get tracked ! </h1>
+<p>
+  We're about to set up different tracking methods in your browser.<br/>
+  How long do you want it to last ? If you don't really know, the 5 minutes default is probably a good value.
+</p>
+<%= form_with scope: :set_tracking, url: set_tracking_path, local: true do |form| %>
+  <p>
+    <%= form.number_field :minutes, value: 5 %>
+    <%= form.label :minutes, 'minutes' %>
+  </p>
+
+  <p>
+    <%= form.number_field :hours, value: 0 %>
+    <%= form.label :hours, 'hours' %>
+  </p>
+
+  <p>
+    <%= form.number_field :days, value: 0 %>
+    <%= form.label :days, 'days' %>
+  </p>
+  <p>
+    <%= form.submit 'Start tracking me !'%>
+  </p>
+
+<% end %>
+<p> <%= link_to('Back', root_path) %> </p>
