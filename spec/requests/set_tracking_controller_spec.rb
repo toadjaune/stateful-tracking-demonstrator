@@ -7,7 +7,6 @@ require 'rails_helper'
 
       it "returns a 200 for a successful request." do
         get set_tracking_path
-        # get 'set_tracking'
         expect(response.status).to eq(200)
       end
 

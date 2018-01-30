@@ -1,4 +1,4 @@
-module ControllerMacros
+module RequestMacros
   def login_user
     before(:each) do
       user = FactoryBot.create(:user)
