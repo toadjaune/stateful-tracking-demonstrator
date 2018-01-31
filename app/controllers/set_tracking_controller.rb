@@ -14,10 +14,8 @@ class SetTrackingController < ApplicationController
 
     # We should not use inspect here
     flash.notice = "Tracking has been successfully set up for #{duration.inspect}."
-
-    # There is no reason to stay on this page once we're done.
-    redirect_to :root
   end
+
 
   private
 
@@ -45,6 +43,8 @@ class SetTrackingController < ApplicationController
       expires:  end_time,
       httponly: true
     }
-
+    
+    #local_storage
+    @local_storage = LocalStorage.create(user: current_user)
   end
 end

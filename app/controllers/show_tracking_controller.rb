@@ -16,6 +16,9 @@ class ShowTrackingController < ApplicationController
     else
       @methods[:first_party_cookie][:worked]      = false
     end
+    
+    @methods[:local_storage] = { :name => 'Local Storage' }
+    @methods[:local_storage][:worked]  = false
 
   end
 end

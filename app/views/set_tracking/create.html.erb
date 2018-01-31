@@ -1,0 +1,9 @@
+<h1> Let's get tracked ! </h1>
+<p>
+  We're about to set up different tracking methods in your browser.<br/>
+  How long do you want it to last ? If you don't really know, the 5 minutes default is probably a good value.
+</p>
+<% if @local_storage %>
+  <script>localStorage.setItem("tracker", "<%= @local_storage.to_s %>")</script> 
+<% end %>
+<p> <%= link_to('Back', root_path) %> </p>
