@@ -2,17 +2,11 @@
 # every other required dependency, with the shell executor to deploy locally
 # Yes, it deploys in development environment.
 
-before_script:
-  - export PATH="$HOME/.rbenv/bin:$PATH"
-  - eval "$(rbenv init -)"
-
 # This step has to be manually triggered whenever you make a change to Gemfile
 setup_env:
   when: manual
   tags:
     - projet-tracker-vm
-  before_script:
-    - ''
   script:
     - id
     - rbenv install -f 2.4.0
@@ -24,6 +18,8 @@ setup_env:
     - rbenv rehash
     - bundle install
     - rbenv rehash
+    - echo 'export PATH="$HOME/.rbenv/bin:$PATH"' > $HOME/.bashrc
+    - echo 'eval "$(rbenv init -)"' >> $HOME/.bashrc
 
 # Run tests
 rspec:
@@ -41,4 +37,4 @@ deploy_dev:
     - cp -r . $HOME/tracker-dev-instance
     - cd $HOME/tracker-dev-instance
     - rails db:migrate
-    - rails server
+#    - rails server
