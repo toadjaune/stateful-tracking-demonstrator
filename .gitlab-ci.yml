@@ -25,8 +25,20 @@ setup_env:
     - bundle install
     - rbenv rehash
 
+# Run tests
 rspec:
   tags:
     - projet-tracker-vm
   script:
     - bundle exec rspec
+
+# Deploy the dev instance of the code
+deploy_dev:
+  tags:
+    - projet-tracker-vm
+  script:
+    - rm -rf $HOME/tracker-dev-instance
+    - cp -r . $HOME/tracker-dev-instance
+    - cd $HOME/tracker-dev-instance
+    - rails db:migrate
+    - rails server
