@@ -14,4 +14,4 @@ For now, it is pretty straightforward :
 
 * `rails server` : Start a local development server
 * `rails db:migrate` : Run this whenever there's a new db migration
-* `rspec .` : Run all tests (the tests are in the spec directory)
+* `rspec` : Run all tests (the tests are in the spec directory)

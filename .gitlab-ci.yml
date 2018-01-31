@@ -1,4 +1,4 @@
-# Note : we are currently using this file with a machine already having ruby and bundler installed,
+# Note : we are currently using this file with a machine already having rbenv and ruby-build installed
 # every other required dependency, with the shell executor to deploy locally
 # Yes, it deploys in development environment.
 
@@ -7,6 +7,18 @@ before_script:
   - ruby -v
   - which ruby
   - bundle install
+
+
+setup_env:
+  tags:
+    - projet-tracker-vm
+  before_script:
+    - ''
+  script:
+    - id
+    - rbenv install 2.4.0
+    - export PATH="$HOME/.rbenv/bin:$PATH"
+    - eval "$(rbenv init -)"
 
 rspec:
   tags:
