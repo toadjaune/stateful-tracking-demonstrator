@@ -1,0 +1,15 @@
+# Note : we are currently using this file with a machine already having ruby and bundler installed,
+# every other required dependency, with the shell executor to deploy locally
+# Yes, it deploys in development environment.
+
+before_script:
+  - id
+  - ruby -v
+  - which ruby
+  - bundle install
+
+rspec:
+  tags:
+    - projet-tracker-vm
+  script:
+    - bundle exec rspec
