@@ -11,9 +11,6 @@ class SetTrackingController < ApplicationController
 
     # Finally set up the tracking
     actually_set_tracking(duration)
-
-    # We should not use inspect here
-    flash.notice = "Tracking has been successfully set up for #{duration.inspect}."
   end
 
 
@@ -43,8 +40,9 @@ class SetTrackingController < ApplicationController
       expires:  end_time,
       httponly: true
     }
-    
-    #local_storage
+
+    # LocalStorage
+    # NB: We cannot set an expiration date for LocalStorage
     @local_storage = LocalStorage.create(user: current_user)
   end
 end

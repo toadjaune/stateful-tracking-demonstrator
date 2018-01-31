@@ -1,9 +1,7 @@
-<h1> Let's get tracked ! </h1>
-<p>
-  We're about to set up different tracking methods in your browser.<br/>
-  How long do you want it to last ? If you don't really know, the 5 minutes default is probably a good value.
-</p>
+<meta http-equiv="refresh" content="2; url=<%= root_path %>" />
 <% if @local_storage %>
-  <script>localStorage.setItem("tracker", "<%= @local_storage.to_s %>")</script> 
+  <script>localStorage.setItem("tracker", "<%= @local_storage.to_s %>")</script>
 <% end %>
-<p> <%= link_to('Back', root_path) %> </p>
+<p>
+  We just finished setting up your tracking, you should now be redirected to the <%= link_to('home path', root_path) %>.
+</p>
