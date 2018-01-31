@@ -3,10 +3,8 @@
 # Yes, it deploys in development environment.
 
 before_script:
-  - id
-  - ruby -v
-  - which ruby
-  - bundle install
+  - export PATH="$HOME/.rbenv/bin:$PATH"
+  - eval "$(rbenv init -)"
 
 # This step has to be manually triggered whenever you make a change to Gemfile
 setup_env:
