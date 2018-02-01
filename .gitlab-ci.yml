@@ -33,8 +33,9 @@ deploy_dev:
   tags:
     - projet-tracker-vm
   script:
+    - if `tmux has-session -t tracker-dev` ; then `tmux kill-session -t tracker-dev`; fi
     - rm -rf $HOME/tracker-dev-instance
     - cp -r . $HOME/tracker-dev-instance
     - cd $HOME/tracker-dev-instance
     - rails db:migrate
-#    - rails server
+    - tmux new-session -s tracker-dev -d rails server
