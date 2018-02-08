@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   get 'show_tracking',                      to: 'show_tracking#collect_data'
   get 'show_tracking/display_data',         to: 'show_tracking#display_data'
-  get 'show_tracking/check_hsts/:domain',  to: 'show_tracking#check_hsts'
+  get 'show_tracking/check_hsts/:index',    to: 'show_tracking#check_hsts'
 
   devise_for :users
   root 'base#index'

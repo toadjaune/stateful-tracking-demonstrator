@@ -1,7 +1,7 @@
 class ShowTrackingController < ApplicationController
   # Make sure the user is logged in
   # (We could eventually remove this and try to guess)
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:check_hsts]
   before_action :find_tracked_session
 
   def collect_data
@@ -11,8 +11,10 @@ class ShowTrackingController < ApplicationController
   def check_hsts
     if request.headers['X-https'] == 'true'
       # We received the request in https thanks to HSTS, so we need to write it to @tracked_session
-      @tracked_session.hsts_token[@hsts_domain_list.index(params[:domain])] = 1
-      @tracked_session = Hsts.find_by(token: @tracked_session.hsts_token)
+      p params[:index].to_i
+      @tracked_session.hsts_token[params[:index].to_i] = '1'
+      p @tracked_session.hsts_token
+      @tracked_session.hsts = Hsts.find_by(token: @tracked_session.hsts_token)
       @tracked_session.save
     end
   end
