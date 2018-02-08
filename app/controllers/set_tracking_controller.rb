@@ -18,7 +18,6 @@ class SetTrackingController < ApplicationController
     response.set_header('Strict-Transport-Security', 'max-age=' + params[:duration].to_s)
     # Allow iframe embedding, see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
     response.set_header('X-Frame-Options', 'ALLOW-FROM *')
-    render nothing: true, status: 200
   end
 
   private
