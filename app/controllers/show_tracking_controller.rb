@@ -8,13 +8,13 @@ class ShowTrackingController < ApplicationController
     @hsts_domain_list = Hsts::HSTS_URL_LIST
   end
 
-  def check_hsts_not_redirected
-    # We received the request in plain http, so there's no hsts cache, so there's nothing to do
-  end
-
-  def check_hsts_redirected
-    # We received the request in https thanks to HSTS, so we need to write it to @tracked_session
-
+  def check_hsts
+    if request.headers['X-https'] == 'true'
+      # We received the request in https thanks to HSTS, so we need to write it to @tracked_session
+      @tracked_session.hsts_token[@hsts_domain_list.index(params[:domain])] = 1
+      @tracked_session = Hsts.find_by(token: @tracked_session.hsts_token)
+      @tracked_session.save
+    end
   end
 
   def display_data

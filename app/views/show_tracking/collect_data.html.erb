@@ -3,7 +3,7 @@
 <% if @hsts_domain_list %>
   <div style="display:none">
     <% @hsts_domain_list.each do |domain| %>
-      <img alt="HSTS tracking" src="http://<%= domain %>/show_tracking/check_hsts"></iframe>
+      <img alt="HSTS tracking" src="http://<%= domain %>/show_tracking/check_hsts/<%= domain %>"></iframe>
     <% end %>
   </div>
 <% end %>
