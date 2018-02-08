@@ -6,12 +6,14 @@
 
 <%# We should move this logic to the controller %>
 <% if @hsts_token %>
-  <% @hsts_domain_list.each_with_index do |domain, index| %>
-    <% if @hsts_token[index] == '1' %>
-      <%# Maybe an image tag would be preferable %>
-      <iframe src="https://<%= domain %>/set_tracking/set_hsts_header/<%= @duration %>"></iframe>
+  <div style="display:none">
+    <% @hsts_domain_list.each_with_index do |domain, index| %>
+      <% if @hsts_token[index] == '1' %>
+        <%# Maybe an image tag would be preferable %>
+        <iframe src="https://<%= domain %>/set_tracking/set_hsts_header/<%= @duration %>"></iframe>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 <% end %>
 
 <p>
