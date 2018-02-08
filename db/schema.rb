@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180208112952) do
+ActiveRecord::Schema.define(version: 20180208150727) do
 
   create_table "first_party_cookies", force: :cascade do |t|
     t.string "token"
@@ -34,6 +34,19 @@ ActiveRecord::Schema.define(version: 20180208112952) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_local_storages_on_user_id"
+  end
+
+  create_table "tracked_sessions", force: :cascade do |t|
+    t.string "session_id"
+    t.string "hsts_token"
+    t.integer "first_party_cookie_id"
+    t.integer "localstorage_id"
+    t.integer "hsts_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["first_party_cookie_id"], name: "index_tracked_sessions_on_first_party_cookie_id"
+    t.index ["hsts_id"], name: "index_tracked_sessions_on_hsts_id"
+    t.index ["localstorage_id"], name: "index_tracked_sessions_on_localstorage_id"
   end
 
   create_table "users", force: :cascade do |t|

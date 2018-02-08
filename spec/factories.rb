@@ -1,4 +1,10 @@
 FactoryBot.define do
+  factory :tracked_session do
+    session_cookie "MyString"
+    first_party_cookie nil
+    localstorage nil
+    hsts nil
+  end
   factory :hst, class: 'Hsts' do
     user nil
     token "MyString"
