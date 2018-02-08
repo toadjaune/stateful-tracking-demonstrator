@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   post 'set_tracking',    to: 'set_tracking#create'
   get 'set_tracking/set_hsts_header/:duration', to: 'set_tracking#set_hsts_header'
 
-  get 'show_tracking',    to: 'show_tracking#index'
+  get 'show_tracking',              to: 'show_tracking#collect_data'
+  get 'show_tracking/display_data', to: 'show_tracking#display_data'
+  get 'show_tracking/check_hsts/:domain/',        to: 'show_tracking#check_hsts_not_redirected'
+  get 'show_tracking/check_hsts/:domain/https',   to: 'show_tracking#check_hsts_redirected' # NB : We need the reverse proxy to append this
 
   devise_for :users
   root 'base#index'
