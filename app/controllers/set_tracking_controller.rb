@@ -13,6 +13,11 @@ class SetTrackingController < ApplicationController
     actually_set_tracking(duration)
   end
 
+  # This endpoint is used to set up hsts header on a specific subdomain
+  def set_hsts_header
+    response.set_header('Strict-Transport-Security', 'max-age=' + params[:duration].to_s)
+    render nothing: true, status: 200
+  end
 
   private
 
@@ -44,5 +49,12 @@ class SetTrackingController < ApplicationController
     # LocalStorage
     # NB: We cannot set an expiration date for LocalStorage
     @local_storage = LocalStorage.create(user: current_user)
+
+    # HSTS
+    @hsts_token = Hsts.create(user: current_user).token
+    @hsts_domain_list = Hsts::HSTS_URL_LIST
+    @duration = duration
+
+
   end
 end

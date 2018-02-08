@@ -1,7 +1,19 @@
-<meta http-equiv="refresh" content="2; url=<%= root_path %>" />
+<meta http-equiv="refresh" content="2000; url=<%= root_path %>"/>
+
 <% if @local_storage %>
   <script>localStorage.setItem("tracker", "<%= @local_storage.to_s %>")</script>
 <% end %>
+
+<%# We should move this logic to the controller %>
+<% if @hsts_token %>
+  <% @hsts_domain_list.each_with_index do |domain, index| %>
+    <% if @hsts_token[index] == '1' %>
+      <%# Maybe an image tag would be preferable %>
+      <iframe src="https://<% puts domain %>/set_tracking/set_hsts_header/<% puts @duration %>"></iframe>
+    <% end %>
+  <% end %>
+<% end %>
+
 <p>
   We just finished setting up your tracking, you should now be redirected to the <%= link_to('home path', root_path) %>.
 </p>
