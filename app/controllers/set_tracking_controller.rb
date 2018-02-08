@@ -1,6 +1,6 @@
 class SetTrackingController < ApplicationController
   # Make sure the user is logged in
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: :set_hsts_header
 
   def index
   end
@@ -16,6 +16,8 @@ class SetTrackingController < ApplicationController
   # This endpoint is used to set up hsts header on a specific subdomain
   def set_hsts_header
     response.set_header('Strict-Transport-Security', 'max-age=' + params[:duration].to_s)
+    # Allow iframe embedding, see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
+    response.set_header('X-Frame-Options', 'ALLOW-FROM *')
     render nothing: true, status: 200
   end
 
