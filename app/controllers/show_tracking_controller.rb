@@ -26,27 +26,23 @@ class ShowTrackingController < ApplicationController
     @methods = {}
 
     # 1st-party cookie
-    @methods[:first_party_cookie] = { :name => 'First party Cookie' }
-    first_party_cookie = FirstPartyCookie.find_by(token: cookies[:tracker])
-    if first_party_cookie
-      @methods[:first_party_cookie][:worked]      = true
-      @methods[:first_party_cookie][:created_at]  = first_party_cookie.created_at
-    else
-      @methods[:first_party_cookie][:worked]      = false
-    end
+    @methods[:first_party_cookie] = extract_data(FirstPartyCookie.find_by(token: cookies[:tracker]), 'First party Cookie')
 
     # LocalStorage
     @methods[:local_storage] = { :name => 'Local Storage' }
     @methods[:local_storage][:worked]  = false
 
     # HSTS
-    @methods[:hsts] = { name: 'HSTS cache' }
-    hsts = @tracked_session.hsts
-    if hsts
-      @methods[:hsts][:worked]     = true
-      @methods[:hsts][:created_at] = hsts.created_at
-    else
-      @methods[:hsts][:worked]     = false
-    end
+    @methods[:hsts] = extract_data(@tracked_session.hsts, 'HSTS cache')
+  end
+
+  private
+
+  def extract_data(object, display_name)
+    {
+      name:       display_name,
+      worked:     ! object.nil?,
+      created_at: object&.created_at
+    }
   end
 end
