@@ -11,12 +11,11 @@ class ShowTrackingController < ApplicationController
   def check_hsts
     if request.headers['X-https'] == 'true'
       # We received the request in https thanks to HSTS, so we need to write it to @tracked_session
-      p params[:index].to_i
       @tracked_session.hsts_token[params[:index].to_i] = '1'
-      p @tracked_session.hsts_token
       @tracked_session.hsts = Hsts.find_by(token: @tracked_session.hsts_token)
       @tracked_session.save
     end
+    head :no_content
   end
 
   def display_data
