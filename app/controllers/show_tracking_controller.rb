@@ -38,5 +38,15 @@ class ShowTrackingController < ApplicationController
     # LocalStorage
     @methods[:local_storage] = { :name => 'Local Storage' }
     @methods[:local_storage][:worked]  = false
+
+    # HSTS
+    @methods[:hsts] = { name: 'HSTS cache' }
+    hsts = @tracked_session.hsts
+    if hsts
+      @methods[:hsts][:worked]     = true
+      @methods[:hsts][:created_at] = hsts.created_at
+    else
+      @methods[:hsts][:worked]     = false
+    end
   end
 end
