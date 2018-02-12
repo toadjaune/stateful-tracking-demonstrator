@@ -1,4 +1,8 @@
 FactoryBot.define do
+  factory :tracked_session_hsts_entry do
+    tracked_session nil
+    url_index 1
+  end
   factory :tracked_session do
     session_cookie "MyString"
     first_party_cookie nil
