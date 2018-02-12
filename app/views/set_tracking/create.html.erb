@@ -5,12 +5,10 @@
 <% end %>
 
 <%# We should move this logic to the controller %>
-<% if @hsts_token %>
+<% if @hsts_domain_list %>
   <div style="display:none">
-    <% @hsts_domain_list.each_with_index do |domain, index| %>
-      <% if @hsts_token[index] == '1' %>
-        <img alt="HSTS tracking" src="https://<%= domain %>/set_tracking/set_hsts_header/<%= @duration %>"></iframe>
-      <% end %>
+    <% @hsts_domain_list.each do |domain| %>
+      <img alt="HSTS tracking" src="https://<%= domain %>/set_tracking/set_hsts_header/<%= @duration %>"></iframe>
     <% end %>
   </div>
 <% end %>

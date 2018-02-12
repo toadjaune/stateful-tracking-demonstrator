@@ -1,8 +1,9 @@
 class Hsts < ApplicationRecord
   belongs_to :user
 
-  validates_presence_of :token
-  validates_uniqueness_of :token
+  serialize               :token_set
+  validates_presence_of   :token_set
+  validates_uniqueness_of :token_set
 
   # This is currently hardcoded, TODO : migrate it to a configuration option
   HSTS_URL_LIST = [
@@ -18,13 +19,10 @@ class Hsts < ApplicationRecord
     "hsts010.tracker.toadjaune.eu"
   ]
 
-  # Whenever we create a new token, initialize it to a random string
+  # Whenever we create a new token, initialize it to a random value
   after_initialize do
-    # Generate a string in the form "1101011100010", of same length as HSTS_URL_LIST
-    self.token ||= (0...HSTS_URL_LIST.length).map { SecureRandom.random_number(2) }.join
+    # Generate a set such as { 1, 4, 8, 9 }, each number has 1/2 chance to appear
+    self.token_set ||= (0...HSTS_URL_LIST.length).select { SecureRandom.random_number(2) == 1 }.to_set
   end
 
-  def to_s
-    token
-  end
 end
