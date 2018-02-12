@@ -9,7 +9,7 @@ class TrackedSession < ApplicationRecord
 
   has_many :tracked_session_hsts_entries
 
-  def hsts_token_set
-    tracked_session_hsts_entries.pluck(:url_index).to_set
+  def hsts_token_ary
+    tracked_session_hsts_entries.order(:url_index).pluck(:url_index).uniq
   end
 end

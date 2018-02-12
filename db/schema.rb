@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20180212175858) do
 
   create_table "hsts", force: :cascade do |t|
     t.integer "user_id"
-    t.string "token_set"
+    t.string "token_ary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_hsts_on_user_id"

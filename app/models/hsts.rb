@@ -1,9 +1,9 @@
 class Hsts < ApplicationRecord
   belongs_to :user
 
-  serialize               :token_set
-  validates_presence_of   :token_set
-  validates_uniqueness_of :token_set
+  serialize               :token_ary
+  validates_presence_of   :token_ary
+  validates_uniqueness_of :token_ary
 
   # This is currently hardcoded, TODO : migrate it to a configuration option
   HSTS_URL_LIST = [
@@ -21,8 +21,8 @@ class Hsts < ApplicationRecord
 
   # Whenever we create a new token, initialize it to a random value
   after_initialize do
-    # Generate a set such as { 1, 4, 8, 9 }, each number has 1/2 chance to appear
-    self.token_set ||= (0...HSTS_URL_LIST.length).select { SecureRandom.random_number(2) == 1 }.to_set
+    # Generate an array such as [ 1, 4, 8, 9 ], each number has 1/2 chance to appear
+    self.token_ary ||= (0...HSTS_URL_LIST.length).select { SecureRandom.random_number(2) == 1 }
   end
 
 end
