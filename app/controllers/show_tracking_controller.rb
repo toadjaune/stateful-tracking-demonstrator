@@ -4,13 +4,15 @@ class ShowTrackingController < ApplicationController
   before_action :authenticate_user!, except: [:check_hsts]
 
   def collect_data
-    @tracked_session = TrackedSession.find_or_create_by(session_id: request.session_options[:id])
+    # NB : we prefer creating a new one every time, just in case the session lasts longer than the tracking
+    @tracked_session = TrackedSession.create(session_id: request.session_options[:id])
     @hsts_domain_list = Hsts::HSTS_URL_LIST
   end
 
   def check_hsts
-    @tracked_session = TrackedSession.find_or_create_by(id: params[:tracked_session_id])
+    @tracked_session = TrackedSession.where(id: params[:tracked_session_id]).last
     if request.headers['X-https'] == 'true'
+      p params[:index]
       # We received the request in https thanks to HSTS, so we need to write it to @tracked_session
       TrackedSessionHstsEntry.create(tracked_session: @tracked_session, url_index: params[:index])
       hsts = Hsts.find_by(token_set: @tracked_session.hsts_token_set)
@@ -23,7 +25,7 @@ class ShowTrackingController < ApplicationController
   end
 
   def display_data
-    @tracked_session = TrackedSession.find_or_create_by(session_id: request.session_options[:id])
+    @tracked_session = TrackedSession.where(session_id: request.session_options[:id]).last
     # Recover all the information about the different tracking methods
     # We should probably migrate all of this in collect_data
     @methods = {}

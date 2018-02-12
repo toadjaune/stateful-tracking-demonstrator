@@ -51,7 +51,11 @@ class SetTrackingController < ApplicationController
     @local_storage = LocalStorage.create(user: current_user)
 
     # HSTS
-    @hsts_domain_list = Hsts.create(user: current_user).token_set.map { |i| Hsts::HSTS_URL_LIST[i] }
+    set = Hsts.create(user: current_user).token_set
+    p set
+    @hsts_domain_list = set.map { |i| Hsts::HSTS_URL_LIST[i] }
+    p @hsts_domain_list
+
     @duration         = duration
 
   end

@@ -9,15 +9,15 @@ class Hsts < ApplicationRecord
   HSTS_URL_LIST = [
     "hsts001.tracker.toadjaune.eu",
     "hsts002.tracker.toadjaune.eu",
-    "hsts003.tracker.toadjaune.eu",
-    "hsts004.tracker.toadjaune.eu",
-    "hsts005.tracker.toadjaune.eu",
-    "hsts006.tracker.toadjaune.eu",
-    "hsts007.tracker.toadjaune.eu",
-    "hsts008.tracker.toadjaune.eu",
-    "hsts009.tracker.toadjaune.eu",
-    "hsts010.tracker.toadjaune.eu"
-  ]
+    "hsts003.tracker.toadjaune.eu"]
+#    "hsts004.tracker.toadjaune.eu",
+#    "hsts005.tracker.toadjaune.eu",
+#    "hsts006.tracker.toadjaune.eu",
+#    "hsts007.tracker.toadjaune.eu",
+#    "hsts008.tracker.toadjaune.eu",
+#    "hsts009.tracker.toadjaune.eu",
+#    "hsts010.tracker.toadjaune.eu"
+#  ]
 
   # Whenever we create a new token, initialize it to a random value
   after_initialize do
