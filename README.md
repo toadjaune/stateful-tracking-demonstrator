@@ -6,7 +6,7 @@ For now, it is pretty straightforward :
   * The current version number is in `.ruby-version`
   * You can either use your distribution package manager, or a ruby version manager such as rbenv
 * Install dependencies
-  * postgresql server and development libraries
+  * `apt-get install postgresql postgresql-contrib libpq-dev`
   * `sudo -Eu postgres createuser -d $USER`
 * `gem install bundler`
 * `bundle install`

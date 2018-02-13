@@ -20,6 +20,7 @@ setup_env:
     - rbenv rehash
     - echo 'export PATH="$HOME/.rbenv/bin:$PATH"' > $HOME/.bashrc
     - echo 'eval "$(rbenv init -)"' >> $HOME/.bashrc
+    # - rails db:setup # /!\ resets the DB
 
 # Run tests
 rspec:
