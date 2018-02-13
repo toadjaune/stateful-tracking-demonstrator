@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'etag/index'
+
   get  'set_tracking',                          to: 'set_tracking#prepare'
   post 'set_tracking',                          to: 'set_tracking#track'
   get 'set_tracking/set_hsts_header/:duration', to: 'set_tracking#set_hsts_header'
@@ -8,6 +10,8 @@ Rails.application.routes.draw do
   get 'show_tracking/display_data',                          to: 'show_tracking#display_data'
   get 'show_tracking/check_hsts/:index/:tracked_session_id', to: 'show_tracking#check_hsts'
   get 'show_tracking/check_local_storage/',                  to: 'show_tracking#check_local_storage'
+
+  get 'etag',   to: 'etag#index'
 
   devise_for :users
   root 'base#index'

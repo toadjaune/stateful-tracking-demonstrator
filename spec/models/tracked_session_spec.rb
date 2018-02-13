@@ -8,6 +8,7 @@
 #  localstorage_id       :integer
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
+#  etag_id               :integer
 #
 
 require 'rails_helper'
