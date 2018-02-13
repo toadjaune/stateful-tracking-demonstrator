@@ -9,6 +9,7 @@ class EtagController < ApplicationController
       etag = Etag.create!(user: current_user)
       # TODO : We currently don't worry about about expiration
       response.set_header('Cache-Control', 'public, max-age=31536000')
+      p etag.token
       response.set_header('ETag', etag.token)
     end
 
