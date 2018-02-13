@@ -2,10 +2,10 @@ class SetTrackingController < ApplicationController
   # Make sure the user is logged in
   before_action :authenticate_user!, except: :set_hsts_header
 
-  def index
+  def prepare
   end
 
-  def create
+  def track
     # Calculate how long we are going to track the user
     duration = sanitized_param(:minutes).minutes + sanitized_param(:hours).hours + sanitized_param(:days).days
 
