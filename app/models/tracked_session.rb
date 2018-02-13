@@ -8,6 +8,7 @@
 #  localstorage_id       :integer
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
+#  etag_id               :integer
 #
 
 class TrackedSession < ApplicationRecord
@@ -17,6 +18,7 @@ class TrackedSession < ApplicationRecord
 
   belongs_to :first_party_cookie, required: false
   belongs_to :localstorage,       required: false
+  belongs_to :etag,               required: false
 
   has_many :tracked_session_hsts_entries
 

@@ -1,4 +1,8 @@
 FactoryBot.define do
+  factory :etag do
+    user nil
+    token "MyString"
+  end
   factory :tracked_session_hsts_entry do
     tracked_session nil
     url_index 1

@@ -1,15 +1,15 @@
 # == Schema Information
 #
-# Table name: local_storages
+# Table name: etags
 #
 #  id         :integer          not null, primary key
-#  token      :text
 #  user_id    :integer
+#  token      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class LocalStorage < ApplicationRecord
+class Etag < ApplicationRecord
   belongs_to :user
 
   validates_presence_of   :token
@@ -20,7 +20,4 @@ class LocalStorage < ApplicationRecord
     self.token ||= SecureRandom.hex
   end
 
-  def to_s
-    token
-  end
 end

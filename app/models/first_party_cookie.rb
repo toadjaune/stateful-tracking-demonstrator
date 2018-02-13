@@ -12,7 +12,7 @@
 class FirstPartyCookie < ApplicationRecord
   belongs_to :user
 
-  validates_presence_of :token
+  validates_presence_of   :token
   validates_uniqueness_of :token
 
   # Whenever we create a new token, initialize it to a random string

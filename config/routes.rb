@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'etag/index'
+
   get  'set_tracking',                          to: 'set_tracking#prepare'
   post 'set_tracking',                          to: 'set_tracking#track'
   get 'set_tracking/set_hsts_header/:duration', to: 'set_tracking#set_hsts_header'
