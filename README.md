@@ -6,9 +6,11 @@ For now, it is pretty straightforward :
   * The current version number is in `.ruby-version`
   * You can either use your distribution package manager, or a ruby version manager such as rbenv
 * Install dependencies
-  * sqlite development libraries
+  * postgresql server and development libraries
+  * `sudo -Eu postgres createuser -d $USER`
 * `gem install bundler`
 * `bundle install`
+* `rails db:setup`
 
 # Handy commands
 
