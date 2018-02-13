@@ -48,11 +48,9 @@ ActiveRecord::Schema.define(version: 20180212175858) do
     t.string "session_id"
     t.integer "first_party_cookie_id"
     t.integer "localstorage_id"
-    t.integer "hsts_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["first_party_cookie_id"], name: "index_tracked_sessions_on_first_party_cookie_id"
-    t.index ["hsts_id"], name: "index_tracked_sessions_on_hsts_id"
     t.index ["localstorage_id"], name: "index_tracked_sessions_on_localstorage_id"
   end
 

@@ -4,7 +4,6 @@ class CreateTrackedSessions < ActiveRecord::Migration[5.1]
       t.string :session_id
       t.belongs_to :first_party_cookie
       t.belongs_to :localstorage
-      t.belongs_to :hsts
 
       t.timestamps
     end

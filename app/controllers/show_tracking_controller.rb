@@ -14,11 +14,6 @@ class ShowTrackingController < ApplicationController
     if request.headers['X-https'] == 'true'
       # We received the request in https thanks to HSTS, so we need to write it to @tracked_session
       TrackedSessionHstsEntry.create(tracked_session: @tracked_session, url_index: params[:index])
-      hsts = Hsts.find_by(token_ary: @tracked_session.hsts_token_ary)
-      if hsts
-        @tracked_session.hsts = hsts
-        @tracked_session.save
-      end
     end
     head :no_content
   end
