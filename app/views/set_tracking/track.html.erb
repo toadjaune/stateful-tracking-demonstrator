@@ -4,14 +4,15 @@
   <script>localStorage.setItem("tracker", "<%= @local_storage.to_s %>")</script>
 <% end %>
 
-<%# We should move this logic to the controller %>
-<% if @hsts_domain_list %>
-  <div style="display:none">
+<div style="display:none">
+  <% if @hsts_domain_list %>
     <% @hsts_domain_list.each do |domain| %>
-      <img alt="HSTS tracking" src="https://<%= domain %>/set_tracking/set_hsts_header/<%= @duration %>"></iframe>
+      <img alt="HSTS tracking" src="https://<%= domain %>/set_tracking/set_hsts_header/<%= @duration %>"/>
     <% end %>
-  </div>
-<% end %>
+  <% end %>
+
+  <img alt="ETag tracking" src="<%= etag_path %>"/>
+</div>
 
 <p>
   We just finished setting up your tracking, you should now be redirected to the <%= link_to('home path', root_path) %>.

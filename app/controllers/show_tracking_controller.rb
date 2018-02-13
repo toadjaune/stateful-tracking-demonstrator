@@ -38,6 +38,9 @@ class ShowTrackingController < ApplicationController
 
     # HSTS
     @methods[:hsts] = extract_data(@tracked_session.hsts, 'HSTS cache')
+
+    # ETag
+    @methods[:etag] = extract_data(@tracked_session.etag, 'ETag cache')
   end
 
   private

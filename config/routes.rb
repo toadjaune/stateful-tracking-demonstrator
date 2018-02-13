@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get 'show_tracking/display_data',                          to: 'show_tracking#display_data'
   get 'show_tracking/check_hsts/:index/:tracked_session_id', to: 'show_tracking#check_hsts'
 
+  get 'etag',   to: 'etag#index'
+
   devise_for :users
   root 'base#index'
 
