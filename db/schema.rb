@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180212175858) do
+ActiveRecord::Schema.define(version: 20180213153946) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "first_party_cookies", force: :cascade do |t|
     t.string "token"
@@ -47,11 +50,11 @@ ActiveRecord::Schema.define(version: 20180212175858) do
   create_table "tracked_sessions", force: :cascade do |t|
     t.string "session_id"
     t.integer "first_party_cookie_id"
-    t.integer "localstorage_id"
+    t.integer "local_storage_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["first_party_cookie_id"], name: "index_tracked_sessions_on_first_party_cookie_id"
-    t.index ["localstorage_id"], name: "index_tracked_sessions_on_localstorage_id"
+    t.index ["local_storage_id"], name: "index_tracked_sessions_on_local_storage_id"
   end
 
   create_table "users", force: :cascade do |t|

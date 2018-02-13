@@ -16,16 +16,3 @@
     </tr>
   <% end %>
 </table>
-<%# This is updating client-side the value for LocalStorage %>
-<script>
-if (localStorage.getItem("tracker") == "<%= current_user.local_storages.last %>") {
-  rowList = document.getElementsByTagName("tbody")[0].children
-  for(i = 0; i < rowList.length; i++) {
-    if(/Local Storage/.test(rowList[i].innerText)) {
-      rowList[i].children[1].innerHTML = "true"
-      rowList[i].children[2].innerHTML = "<%= current_user.local_storages.last.created_at %>"
-      break;
-    }
-  }
-}
-</script>

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'show_tracking',                                       to: 'show_tracking#collect_data'
   get 'show_tracking/display_data',                          to: 'show_tracking#display_data'
   get 'show_tracking/check_hsts/:index/:tracked_session_id', to: 'show_tracking#check_hsts'
+  get 'show_tracking/check_local_storage/',                  to: 'show_tracking#check_local_storage'
 
   devise_for :users
   root 'base#index'

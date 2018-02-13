@@ -1,7 +1,7 @@
 class ShowTrackingController < ApplicationController
   # Make sure the user is logged in
   # (We could eventually remove this and try to guess)
-  before_action :authenticate_user!, except: [:check_hsts]
+  before_action :authenticate_user!, except: [:check_hsts, :check_local_storage]
 
   def collect_data
     # NB : we prefer creating a new one every time, just in case the session lasts longer than the tracking
@@ -23,6 +23,13 @@ class ShowTrackingController < ApplicationController
     head :no_content
   end
 
+  def check_local_storage
+    @tracked_session = TrackedSession.where(id: params[:id]).last
+    local_storage = LocalStorage.find_by(token: params[:token])
+    @tracked_session.local_storage = local_storage
+    @tracked_session.save
+  end
+
   def display_data
     @tracked_session = TrackedSession.where(session_id: request.session_options[:id]).last
     # Recover all the information about the different tracking methods
@@ -31,10 +38,8 @@ class ShowTrackingController < ApplicationController
     # 1st-party cookie
     @methods[:first_party_cookie] = extract_data(FirstPartyCookie.find_by(token: cookies[:tracker]), 'First party Cookie')
 
-    # TODO: migrate this in collect_data
     # LocalStorage
-    @methods[:local_storage] = { :name => 'Local Storage' }
-    @methods[:local_storage][:worked]  = false
+    @methods[:local_storage] = extract_data(@tracked_session.local_storage, 'Local Storage')
 
     # HSTS
     @methods[:hsts] = extract_data(@tracked_session.hsts, 'HSTS cache')

@@ -5,7 +5,7 @@
 #  id                    :integer          not null, primary key
 #  session_id            :string
 #  first_party_cookie_id :integer
-#  localstorage_id       :integer
+#  local_storage_id       :integer
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
 #
@@ -16,7 +16,7 @@ class TrackedSession < ApplicationRecord
   validates_presence_of   :session_id
 
   belongs_to :first_party_cookie, required: false
-  belongs_to :localstorage,       required: false
+  belongs_to :local_storage,      required: false
 
   has_many :tracked_session_hsts_entries
 
