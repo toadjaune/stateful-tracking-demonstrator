@@ -11,8 +11,7 @@ class EtagController < ApplicationController
       response.set_header('Cache-Control', 'public, max-age=31536000')
       p etag.token
       response.set_header('ETag', etag.token)
-      response.set_header('Content-Type', 'text/css; charset=utf-8')
-      render plain: "p { background: #000000 }"
+      render content_type: 'image/png', plain: open('public/1pixel.png', 'rb').read
 #    end
 
     if request.headers['Referer']&.include? 'show_tracking'
