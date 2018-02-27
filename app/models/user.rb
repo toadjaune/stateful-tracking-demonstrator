@@ -20,6 +20,7 @@ class User < ApplicationRecord
   has_many :local_storages
   has_many :hstss
   has_many :etags
+  has_many :hpkps
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

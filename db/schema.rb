@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180213153946) do
+ActiveRecord::Schema.define(version: 20180227140518) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,14 @@ ActiveRecord::Schema.define(version: 20180213153946) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_first_party_cookies_on_user_id"
+  end
+
+  create_table "hpkps", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_hpkps_on_user_id"
   end
 
   create_table "hsts", force: :cascade do |t|
@@ -62,8 +70,10 @@ ActiveRecord::Schema.define(version: 20180213153946) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "etag_id"
+    t.bigint "hpkp_id"
     t.index ["etag_id"], name: "index_tracked_sessions_on_etag_id"
     t.index ["first_party_cookie_id"], name: "index_tracked_sessions_on_first_party_cookie_id"
+    t.index ["hpkp_id"], name: "index_tracked_sessions_on_hpkp_id"
     t.index ["local_storage_id"], name: "index_tracked_sessions_on_local_storage_id"
   end
 
@@ -81,4 +91,5 @@ ActiveRecord::Schema.define(version: 20180213153946) do
   end
 
   add_foreign_key "etags", "users"
+  add_foreign_key "hpkps", "users"
 end

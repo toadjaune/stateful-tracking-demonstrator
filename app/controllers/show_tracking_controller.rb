@@ -46,6 +46,9 @@ class ShowTrackingController < ApplicationController
 
     # ETag
     @methods[:etag] = extract_data(@tracked_session.etag, 'ETag cache')
+
+    # HPKP
+    @methods[:hpkp] = extract_data(@tracked_session.hpkp, 'HPKP cache')
   end
 
   private

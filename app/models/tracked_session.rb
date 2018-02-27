@@ -19,6 +19,7 @@ class TrackedSession < ApplicationRecord
   belongs_to :first_party_cookie, required: false
   belongs_to :local_storage,      required: false
   belongs_to :etag,               required: false
+  belongs_to :hpkp,               required: false
 
   has_many :tracked_session_hsts_entries
 

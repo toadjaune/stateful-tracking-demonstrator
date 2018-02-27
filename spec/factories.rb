@@ -1,4 +1,7 @@
 FactoryBot.define do
+  factory :hpkp do
+    token "MyString"
+  end
   factory :etag do
     user nil
     token "MyString"

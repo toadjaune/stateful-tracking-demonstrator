@@ -55,5 +55,11 @@ class SetTrackingController < ApplicationController
     @hsts_domain_list = ary.map { |i| Hsts::HSTS_URL_LIST[i] }
     @duration         = duration
 
+    # HPKP
+    # TODO : permettre de mettre le nom de domaine en configuration de l'application
+    hpkp = Hpkp.create(user: current_user)
+    response.set_header('Public-Key-Pins-Report-Only', 'max-age=' + duration.to_s + ';' + 'pin-sha256="' + hpkp.to_s + '";' + 'report-uri=http://tracker.cs-campus.fr/hpkp-report; includeSubDomains') 
+
+
   end
 end

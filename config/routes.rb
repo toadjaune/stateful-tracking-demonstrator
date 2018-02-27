@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   get 'etag',   to: 'etag#index'
 
+  post 'hpkp-report',   to: 'hpkp#report'
+
   devise_for :users
   root 'base#index'
 
