@@ -6,7 +6,7 @@
   <tr>
     <th> Tracking method </th>
     <th> Does this track someone ? </th>
-    <% if current_user %>
+    <% if user_signed_in? %>
       <th> Is it you ? </th>
     <% end %>
     <th> Set at : </th>
@@ -15,10 +15,10 @@
     <tr>
       <td> <%= method[:name] %> </td>
       <td> <%= method[:worked] %> </td>
-      <td> <%= method[:correct] %> </td>
-      <% if current_user %>
-        <td> <%= method[:created_at] %> </td>
+      <% if user_signed_in? %>
+        <td> <%= method[:correct] %> </td>
       <% end %>
+      <td> <%= method[:created_at] %> </td>
     </tr>
   <% end %>
 </table>

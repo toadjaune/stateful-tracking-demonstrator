@@ -1,7 +1,4 @@
 class ShowTrackingController < ApplicationController
-  # Make sure the user is logged in
-  # (We could eventually remove this and try to guess)
-  before_action :authenticate_user!, except: [:check_hsts, :check_local_storage]
 
   def collect_data
     # NB : we prefer creating a new one every time, just in case the session lasts longer than the tracking
@@ -61,7 +58,7 @@ class ShowTrackingController < ApplicationController
     {
       name:       display_name,
       worked:     ! object.nil?, # Do we think we found a tracked user ?
-      correct:    current_user && current_user == object&.user, # Is it the user currently logged in ?
+      correct:    user_signed_in? && current_user == object&.user, # Is it the user currently logged in ?
       created_at: object&.created_at
     }
   end
