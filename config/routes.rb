@@ -16,9 +16,13 @@ Rails.application.routes.draw do
   post 'hpkp-report',   to: 'hpkp#report'
 
   devise_for :users
-  root 'base#index'
+  # Since we disabled rails normal js, we can't use the DELETE route, so we need a GET one
+  devise_scope :user do
+    get 'users/sign_out', to: 'devise/sessions#destroy'
+  end
 
-  get 'base/index'
+
+  root 'base#index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

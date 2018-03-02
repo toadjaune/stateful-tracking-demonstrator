@@ -5,14 +5,20 @@
 <table>
   <tr>
     <th> Tracking method </th>
-    <th> Working ? </th>
+    <th> Does this track someone ? </th>
+    <% if current_user %>
+      <th> Is it you ? </th>
+    <% end %>
     <th> Set at : </th>
   </tr>
   <% @methods.each do |key,method| %>
     <tr>
       <td> <%= method[:name] %> </td>
       <td> <%= method[:worked] %> </td>
-      <td> <%= method[:created_at] %> </td>
+      <td> <%= method[:correct] %> </td>
+      <% if current_user %>
+        <td> <%= method[:created_at] %> </td>
+      <% end %>
     </tr>
   <% end %>
 </table>

@@ -60,7 +60,8 @@ class ShowTrackingController < ApplicationController
   def extract_data(object, display_name)
     {
       name:       display_name,
-      worked:     ! object.nil?,
+      worked:     ! object.nil?, # Do we think we found a tracked user ?
+      correct:    current_user && current_user == object&.user, # Is it the user currently logged in ?
       created_at: object&.created_at
     }
   end

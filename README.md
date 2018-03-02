@@ -17,3 +17,8 @@ For now, it is pretty straightforward :
 * `rails server` : Start a local development server
 * `rails db:migrate` : Run this whenever there's a new db migration
 * `rspec` : Run all tests (the tests are in the spec directory)
+
+# Reverse proxy setup (to automate)
+
+* You need a trusted wildcard, for HPKP
+  * You can't do a self-signed one and just accept a security exception, you need to have a CA sign it, and if it is a self-signed CA, to manually add it to your browser trust store
