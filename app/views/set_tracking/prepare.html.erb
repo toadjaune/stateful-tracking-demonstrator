@@ -4,16 +4,44 @@
   How long do you want it to last ? If you don't really know, the 5 minutes default is probably a good value.
 </p>
 <%= form_with scope: :set_tracking, url: set_tracking_path, local: true do |form| %>
+
+  <p>
+    <table>
+      <tr>
+        <th></th>
+        <th>Méthode</th>
+      </tr>
+      <tr>
+        <td><%= form.check_box :track_first_party_cookie, checked: true %></td>
+        <td><%= form.label     :track_first_party_cookie, 'First-party Cookie' %></td>
+      </tr>
+      <tr>
+        <td><%= form.check_box :track_local_storage, checked: true %></td>
+        <td><%= form.label     :track_local_storage, 'Local Storage' %></td>
+      </tr>
+      <tr>
+        <td><%= form.check_box :track_hsts, checked: true  %></td>
+        <td><%= form.label     :track_hsts, 'HSTS Cache' %></td>
+      </tr>
+      <tr>
+        <td><%= form.check_box :track_etag, checked: true %></td>
+        <td><%= form.label     :track_etag, 'ETag Cache' %></td>
+      </tr>
+      <tr>
+        <td><%= form.check_box :track_hpkp, checked: true %></td>
+        <td><%= form.label     :track_hpkp, 'HPKP' %></td>
+      </tr>
+    </table>
+  </p>
+
   <p>
     <%= form.number_field :minutes, value: 5 %>
     <%= form.label :minutes, 'minutes' %>
   </p>
-
   <p>
     <%= form.number_field :hours, value: 0 %>
     <%= form.label :hours, 'hours' %>
   </p>
-
   <p>
     <%= form.number_field :days, value: 0 %>
     <%= form.label :days, 'days' %>

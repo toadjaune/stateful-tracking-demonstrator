@@ -11,7 +11,9 @@
     <% end %>
   <% end %>
 
-  <img alt="ETag tracking" src="<%= etag_path %>"/>
+  <% if @etag %>
+    <img alt="ETag tracking" src="<%= etag_path %>"/>
+  <% end %>
 </div>
 
 <p>

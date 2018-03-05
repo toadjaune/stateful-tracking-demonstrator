@@ -10,7 +10,7 @@ class ShowTrackingController < ApplicationController
     @tracked_session.save!
   end
 
-  # NB : This method is called by the view, once per hsts subdomain
+  # NB : The view generates a call to this endpoint per hsts subdomain
   def check_hsts
     @tracked_session = TrackedSession.where(id: params[:tracked_session_id]).last
     if request.headers['X-https'] == 'true'
@@ -20,6 +20,7 @@ class ShowTrackingController < ApplicationController
     head :no_content
   end
 
+  # NB : The view generates a call to this endpoint
   def check_local_storage
     @tracked_session = TrackedSession.where(id: params[:id]).last
     local_storage = LocalStorage.find_by(token: params[:token])

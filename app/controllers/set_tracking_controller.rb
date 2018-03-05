@@ -23,7 +23,7 @@ class SetTrackingController < ApplicationController
 
   def set_tracking_params
     # To follow rails conventions, we use a separate method to validate strong parameters
-    params.require(:set_tracking).permit(:minutes, :hours, :days)
+    params.require(:set_tracking).permit(:minutes, :hours, :days, :track_first_party_cookie, :track_local_storage, :track_hsts, :track_etag, :track_hpkp)
   end
 
   def sanitized_param(param_symbol)
@@ -39,27 +39,37 @@ class SetTrackingController < ApplicationController
     response.set_header('X-cat', 'Meow')
 
     # 1st-party cookie
-    first_party_cookie = FirstPartyCookie.create(user: current_user)
-    cookies[:tracker] = {
-      value:    first_party_cookie.token,
-      expires:  end_time,
-      httponly: true
-    }
+    if set_tracking_params[:track_first_party_cookie] == '1'
+      first_party_cookie = FirstPartyCookie.create(user: current_user)
+      cookies[:tracker] = {
+        value:    first_party_cookie.token,
+        expires:  end_time,
+        httponly: true
+      }
+    end
 
     # LocalStorage
     # NB: We cannot set an expiration date for LocalStorage
-    @local_storage = LocalStorage.create(user: current_user)
+    if set_tracking_params[:track_local_storage] == '1'
+      @local_storage = LocalStorage.create(user: current_user)
+    end
 
     # HSTS
-    ary = Hsts.create(user: current_user).token_ary
-    @hsts_domain_list = ary.map { |i| Hsts::HSTS_URL_LIST[i] }
-    @duration         = duration
+    if set_tracking_params[:track_hsts] == '1'
+      ary = Hsts.create(user: current_user).token_ary
+      @hsts_domain_list = ary.map { |i| Hsts::HSTS_URL_LIST[i] }
+      @duration         = duration
+    end
+
+    # ETags
+    @ETag = set_tracking_params[:track_hsts] == '1'
 
     # HPKP
     # TODO : permettre de mettre le nom de domaine en configuration de l'application
-    hpkp = Hpkp.create(user: current_user)
-    response.set_header('Public-Key-Pins-Report-Only', 'max-age=' + duration.to_s + ';' + 'pin-sha256="' + hpkp.to_s + '";' + 'report-uri=http://tracker.cs-campus.fr/hpkp-report; includeSubDomains') 
-
+    if set_tracking_params[:track_hpkp] == '1'
+      @hpkp = Hpkp.create(user: current_user)
+      response.set_header('Public-Key-Pins-Report-Only', 'max-age=' + duration.to_s + ';' + 'pin-sha256="' + @hpkp.to_s + '";' + 'report-uri=http://tracker.cs-campus.fr/hpkp-report; includeSubDomains')
+    end
 
   end
 end
