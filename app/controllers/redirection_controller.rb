@@ -11,7 +11,9 @@ class RedirectionController < ApplicationController
     # Redirect the user, and make sure we do not do anything with the subsequent request
     session[:tracked_session_id] = nil
     redirection_token = Redirection.create!(user: current_user).token
-    redirect_to '/redirection/'+redirection_token, status: 301, content_type: 'text/css'
+    response.set_header('Content-Type', 'text/css')
+    # TODO : find a clean way to do this
+    redirect_to 'https://tracker.toadjaune.eu/redirection/'+redirection_token, status: 301
   end
 
   def get_tracking
