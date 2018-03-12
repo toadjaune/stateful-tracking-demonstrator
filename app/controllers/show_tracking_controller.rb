@@ -4,14 +4,15 @@ class ShowTrackingController < ApplicationController
     # NB : we prefer creating a new one every time, just in case the session lasts longer than the tracking
     @tracked_session = TrackedSession.new(session_id: request.session_options[:id])
 
-    # This is used to find the correct session in some tracking methods
-    session[:tracked_session_id] = @tracked_session.id
-
     @hsts_domain_list = Hsts::HSTS_URL_LIST
 
     check_first_party_cookie
 
     @tracked_session.save!
+
+    # This is used to find the correct session in some tracking methods
+    session[:tracked_session_id] = @tracked_session.id
+    p session[:tracked_session_id]
   end
 
   # NB : The view generates a call to this endpoint per hsts subdomain
@@ -33,6 +34,7 @@ class ShowTrackingController < ApplicationController
   end
 
   def display_data
+    p session[:tracked_session_id]
     @tracked_session = TrackedSession.where(session_id: request.session_options[:id]).last
     # Recover all the information about the different tracking methods
     @methods = {}

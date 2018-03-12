@@ -6,17 +6,19 @@ class RedirectionController < ApplicationController
     # Once it is set up, we should directly land on get_tracking
 
     # Set up expiration
-    #response.set_header('Cache-Control', 'private, max-age=')
+    response.set_header('Cache-Control', 'private, max-age=300')
 
     # Redirect the user, and make sure we do not do anything with the subsequent request
     session[:tracked_session_id] = nil
     redirection_token = Redirection.create!(user: current_user).token
     response.set_header('Content-Type', 'text/css')
     # TODO : find a clean way to do this
-    redirect_to 'https://tracker.toadjaune.eu/redirection/'+redirection_token, status: 301
+    redirect_to '/redirection/'+redirection_token, status: 301
   end
 
   def get_tracking
+    p 'plop'
+    p session[:tracked_session_id]
     if session[:tracked_session_id]
       tracked_session = TrackedSession.find session[:tracked_session_id]
       tracked_session.redirection = Redirection.find_by(token: params[:redirection_token])
