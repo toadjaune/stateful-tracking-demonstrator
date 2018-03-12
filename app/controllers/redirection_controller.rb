@@ -18,7 +18,7 @@ class RedirectionController < ApplicationController
       redirect_to 'https://tracker.toadjaune.eu/redirection/' + redirection_token, status: 301
     else
       # Not supposed to happen
-      head :no_content
+      render content_type: 'text/css', plain: "img{ border:none; }"
     end
   end
 
@@ -28,7 +28,7 @@ class RedirectionController < ApplicationController
       tracked_session.redirection = Redirection.find_by(token: params[:redirection_token])
       tracked_session.save!
     end
-    head :no_content
+    render content_type: 'text/css', plain: "img{ border:none; }"
   end
 
 end
