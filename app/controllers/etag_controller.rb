@@ -3,7 +3,7 @@ class EtagController < ApplicationController
   def index
     # This endpoint is used for ETag tracking
     # We use the Referer header to make the difference between set_tracking and show_tracking
-    # NB : We have no way set an expiration time
+    # NB : We have no way to set an expiration time
 
     if request.headers['Referer']&.include? 'set_tracking'
       authenticate_user!

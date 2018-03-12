@@ -13,6 +13,9 @@ Rails.application.routes.draw do
 
   get 'etag',   to: 'etag#index'
 
+  get 'redirection',                    to: 'redirection#set_tracking'
+  get 'redirection/:redirection_token', to: 'redirection#get_tracking'
+
   post 'hpkp-report',   to: 'hpkp#report'
 
   devise_for :users
