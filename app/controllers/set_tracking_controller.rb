@@ -72,6 +72,7 @@ class SetTrackingController < ApplicationController
     end
 
     # Redirections
+    session[:tracking_duration] = @duration
     @redirection = set_tracking_params[:track_redirection] == '1'
   end
 end
