@@ -51,6 +51,9 @@ class ShowTrackingController < ApplicationController
 
     # HPKP
     @methods[:hpkp] = extract_data(@tracked_session.hpkp, 'HPKP cache')
+
+    # HPKP
+    @methods[:redirection] = extract_data(@tracked_session.redirection, 'Redirection cache')
   end
 
   private

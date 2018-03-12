@@ -21,15 +21,19 @@
       </tr>
       <tr>
         <td><%= form.check_box :track_hsts, checked: true  %></td>
-        <td><%= form.label     :track_hsts, 'HSTS Cache' %></td>
+        <td><%= form.label     :track_hsts, 'HSTS cache' %></td>
       </tr>
       <tr>
         <td><%= form.check_box :track_etag, checked: true %></td>
-        <td><%= form.label     :track_etag, 'ETag Cache' %></td>
+        <td><%= form.label     :track_etag, 'ETag cache' %></td>
       </tr>
       <tr>
         <td><%= form.check_box :track_hpkp, checked: true %></td>
         <td><%= form.label     :track_hpkp, 'HPKP' %></td>
+      </tr>
+      <tr>
+        <td><%= form.check_box :track_redirection, checked: true %></td>
+        <td><%= form.label     :track_redirection, 'Redirection cache' %></td>
       </tr>
     </table>
   </p>

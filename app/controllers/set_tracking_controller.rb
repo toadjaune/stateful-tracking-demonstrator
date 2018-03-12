@@ -23,7 +23,7 @@ class SetTrackingController < ApplicationController
 
   def set_tracking_params
     # To follow rails conventions, we use a separate method to validate strong parameters
-    params.require(:set_tracking).permit(:minutes, :hours, :days, :track_first_party_cookie, :track_local_storage, :track_hsts, :track_etag, :track_hpkp)
+    params.require(:set_tracking).permit(:minutes, :hours, :days, :track_first_party_cookie, :track_local_storage, :track_hsts, :track_etag, :track_hpkp, :track_redirection)
   end
 
   def sanitized_param(param_symbol)
@@ -71,5 +71,7 @@ class SetTrackingController < ApplicationController
       response.set_header('Public-Key-Pins-Report-Only', 'max-age=' + duration.to_s + ';' + 'pin-sha256="' + @hpkp.to_s + '";' + 'report-uri=http://tracker.cs-campus.fr/hpkp-report; includeSubDomains')
     end
 
+    # Redirections
+    @redirection = set_tracking_params[:track_redirection] == '1'
   end
 end
