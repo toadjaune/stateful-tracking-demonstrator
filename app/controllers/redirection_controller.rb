@@ -20,7 +20,7 @@ class RedirectionController < ApplicationController
       tracked_session.redirection = Redirection.find_by(token: params[:redirection_token])
       tracked_session.save!
     end
-    head :no_content
+    render content_type: 'image/png', plain: open('public/1pixel.png', 'rb').read
 #    if request.headers['Referer']&.include? 'set_tracking'
 #      authenticate_user!
 #      etag = Etag.create!(user: current_user)
