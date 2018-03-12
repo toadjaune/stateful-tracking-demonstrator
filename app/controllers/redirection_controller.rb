@@ -11,7 +11,7 @@ class RedirectionController < ApplicationController
     # Redirect the user, and make sure we do not do anything with the subsequent request
     session[:tracked_session_id] = nil
     redirection_token = Redirection.create!(user: current_user).token
-    redirect_to '/redirection/'+redirection_token, status: 301
+    redirect_to '/redirection/'+redirection_token, status: 301, content_type: 'text/css'
   end
 
   def get_tracking
@@ -20,7 +20,7 @@ class RedirectionController < ApplicationController
       tracked_session.redirection = Redirection.find_by(token: params[:redirection_token])
       tracked_session.save!
     end
-    head :no_content
+    render content_type: 'text/css', plain: "img{ border:none; }"
 #    if request.headers['Referer']&.include? 'set_tracking'
 #      authenticate_user!
 #      etag = Etag.create!(user: current_user)
