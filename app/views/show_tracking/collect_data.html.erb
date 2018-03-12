@@ -1,7 +1,6 @@
 <meta http-equiv="refresh" content="2000; url=<%= show_tracking_display_data_path %>"/>
 
 <div style="display:none">
-  <% if false %>
   <script>
   a = new XMLHttpRequest();
   a.open("GET","/show_tracking/check_local_storage?token="+localStorage.tracker+"&id=<%= @tracked_session.id %>");
@@ -14,7 +13,6 @@
   <% end %>
 
   <img alt="ETag tracking" src="<%= etag_path %>"/>
-  <% end %>
   <link rel="stylesheet" media="all" href="<%= redirection_path %>">
 </div>
 

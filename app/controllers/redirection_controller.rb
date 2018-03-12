@@ -13,12 +13,10 @@ class RedirectionController < ApplicationController
     redirection_token = Redirection.create!(user: current_user).token
     response.set_header('Content-Type', 'text/css')
     # TODO : find a clean way to do this
-    redirect_to '/redirection/'+redirection_token, status: 301
+    redirect_to 'https://tracker.toadjaune.eu/redirection/'+redirection_token, status: 301
   end
 
   def get_tracking
-    p 'plop'
-    p session[:tracked_session_id]
     if session[:tracked_session_id]
       tracked_session = TrackedSession.find session[:tracked_session_id]
       tracked_session.redirection = Redirection.find_by(token: params[:redirection_token])
