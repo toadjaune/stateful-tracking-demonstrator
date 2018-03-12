@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: hpkps
+# Table name: redirections
 #
 #  id         :integer          not null, primary key
 #  user_id    :integer
@@ -9,18 +9,15 @@
 #  updated_at :datetime         not null
 #
 
-class Hpkp < ApplicationRecord
+class Redirection < ApplicationRecord
   belongs_to :user
 
   validates_presence_of   :token
   validates_uniqueness_of :token
 
-  # Whenever we create a new token, initialize it to a random base64
+  # Whenever we create a new token, initialize it to a random string
   after_initialize do
-    self.token ||= SecureRandom.base64(256)
+    self.token ||= SecureRandom.hex
   end
 
-  def to_s
-    token
-  end
 end

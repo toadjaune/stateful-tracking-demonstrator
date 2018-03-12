@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180227140518) do
+ActiveRecord::Schema.define(version: 20180312140400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,14 @@ ActiveRecord::Schema.define(version: 20180227140518) do
     t.index ["user_id"], name: "index_local_storages_on_user_id"
   end
 
+  create_table "redirections", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_redirections_on_user_id"
+  end
+
   create_table "tracked_session_hsts_entries", force: :cascade do |t|
     t.integer "tracked_session_id"
     t.integer "url_index"
@@ -71,10 +79,12 @@ ActiveRecord::Schema.define(version: 20180227140518) do
     t.datetime "updated_at", null: false
     t.bigint "etag_id"
     t.bigint "hpkp_id"
+    t.bigint "redirection_id"
     t.index ["etag_id"], name: "index_tracked_sessions_on_etag_id"
     t.index ["first_party_cookie_id"], name: "index_tracked_sessions_on_first_party_cookie_id"
     t.index ["hpkp_id"], name: "index_tracked_sessions_on_hpkp_id"
     t.index ["local_storage_id"], name: "index_tracked_sessions_on_local_storage_id"
+    t.index ["redirection_id"], name: "index_tracked_sessions_on_redirection_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -92,4 +102,5 @@ ActiveRecord::Schema.define(version: 20180227140518) do
 
   add_foreign_key "etags", "users"
   add_foreign_key "hpkps", "users"
+  add_foreign_key "redirections", "users"
 end

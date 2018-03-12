@@ -5,10 +5,12 @@
 #  id                    :integer          not null, primary key
 #  session_id            :string
 #  first_party_cookie_id :integer
-#  local_storage_id       :integer
+#  local_storage_id      :integer
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
 #  etag_id               :integer
+#  hpkp_id               :integer
+#  redirection_id        :integer
 #
 
 class TrackedSession < ApplicationRecord
@@ -20,6 +22,7 @@ class TrackedSession < ApplicationRecord
   belongs_to :local_storage,      required: false
   belongs_to :etag,               required: false
   belongs_to :hpkp,               required: false
+  belongs_to :redirection,        required: false
 
   has_many :tracked_session_hsts_entries
 

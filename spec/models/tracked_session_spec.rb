@@ -5,10 +5,12 @@
 #  id                    :integer          not null, primary key
 #  session_id            :string
 #  first_party_cookie_id :integer
-#  localstorage_id       :integer
+#  local_storage_id      :integer
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
 #  etag_id               :integer
+#  hpkp_id               :integer
+#  redirection_id        :integer
 #
 
 require 'rails_helper'
