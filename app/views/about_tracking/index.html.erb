@@ -1,6 +1,6 @@
 <h2>What is stateful tracking ?</h2>
 
-<p>There is a lot of ways for a website to recognized an user but we can set up two categories :<p>
+<p>There are many ways for a website to recognize a user, but for the sake of this explanation, we'll set up two categories :<p>
 <ul>
   <li> Stateless tracking </li>
   <li> Stateful tracking </li>
@@ -8,18 +8,50 @@
 
 <h3> Stateless tracking </h3>
 <p>
-The tracking methods under this category is about fetching the characteristics of your browser and your device to distinguish one user from an another. It is called fingerprinting. This is outside the scope of this website but we recommand you to look at websites like <a href="https://panopticlick.eff.org/" target="_blank">Panopticlick</a> or <a href="https://amiunique.org/" target="_blank">Am I Unique?</a> which covers this subjet well more than us.
+Stateless tracking is about fetching the characteristics of your browser and your device, and group them to build a unique identifier of your browser, called a fingerprint.
+Since this type of tracking does not rely on storing anything in your browser, but only on reading its characteristics, you can't "clear" anything.
+It is however possible to reduce the amount of information leaked by your browser, which makes it harder for the website owner to get a unique fingerprint for each user.
+</p>
+<p>
+This website does not address this type of tracking, but we recommend you to have a look at websites such as <a href="https://panopticlick.eff.org/" target="_blank">Panopticlick</a> or <a href="https://amiunique.org/" target="_blank">Am I Unique?</a>, which cover this topic quite extensively.
 </p>
 
 <h3> Stateful tracking </h3>
 <p>
-Here, the tracking is about making the browser store informations when setting up the tracker and then getting them back to identify the user. The most known way to do that is the <a href="https://en.wikipedia.org/wiki/HTTP_cookie" target="_blank">cookie</a> which can be, and actually sometimes is, used for legitimate purposes allowing Single Sign-On (like <i>Connect with Facebook</i>) to work or remembering preferences, but is also massivly used for tracking users. Since its creation around 1995, the public has been alerted about privacy issues coming from cookies and some others way to make the browser store informations for tracking purposes has been found and used, mostly for advertising.
+Here, the tracking is done in two steps :
+<ul>
+  <li> During the first visit of a user, the website stores identifying information in the browser</li>
+  <li> During each subsequent visit, the website retrieves the information previously stored, and uses it to link your new session to the previous ones. If required, it will also refresh the tracking information for your next visit</li>
+</ul>
+In this case, in theory, absolutely nothing prevents you from erasing this tracking information.
+However, as you'll be able to notice on this website, it is often complicated, if not impossible to do.
+</p>
+
+<h2> Why do we even allow that ?</h2>
+
+<p>
+There are different cases leading to potential tracking.
+</p>
+<p>
+First off, for some technologies, tracking is the primay objective.
+The most common and basic way to track a user on a website is called a <a href="https://en.wikipedia.org/wiki/HTTP_cookie" target="_blank">cookie</a>.
+It is a small bit of data that a website can store on your browser, and that your browser will then send back with every request you make.
+This is extremely useful, for example to keep you logged in between two visits on a website, or to store your preferences (dark theme, language…).
+However, nothing can prevent a website from using them to do anything else they want with it.
+</p>
+<p>
+Then, there are many other technologies, which have a totally different purpose, but can be misused to track the user.
+Most of them rely on <i>cache</i>.
+Caching is a very important element of the web platform ; basically it's the very simple idea that if you download some data once (for example, the Google landing page logo), you can keep it saved on your computer and use it every time you Google something, instead of downloading it again every time.
+The thing is that there is a difference of behaviour between a browser in which some data is cached, and the one in which it's not.
+To keep going with our example, your browser is not going to download the image again if it's not its first visit, which can be detected by Google).
+In this example, we obviously can't identify you with such a small amount of information (ie whether you did download the image or not), but in more complex scenarios, it is possible.
 </p>
 
 <h2> Why should I care ?</h2>
-
 <p>
-Pros and cons of tracking has already been said and repeated so we can suggest you a couple of online ressources you can consult to make your choice. 
+Short version : tracking you allows websites to sell information about you, and this can then have bad consequences on you.
+This is however a very complex topic, but fortunately, there is extensive documentation on it all over the Internet, here are a couple online resources that you can start with :
 </p>
 <ul>
   <li> <a href="https://www.eff.org/issues/privacy" target="_blank">The Electronic Frontier Fondation website</a> </li>
@@ -27,7 +59,7 @@ Pros and cons of tracking has already been said and repeated so we can suggest y
 </ul>
 
 <p>
-However, tracking is done without notifying the user being tracked (<i>you</i>) which is problematic. While it should the user's choice if he wants to be tracked or not, we have constated that the general public is not aware of how the tracking is done and how to protect oneself against it. Ultimately, we give you the tools to choose. 
+However, tracking is done without notifying the user being tracked (<i>you</i>) which is problematic. While it should the user's choice if he wants to be tracked or not, we have constated that the general public is not aware of how the tracking is done and how to protect oneself against it. Ultimately, we give you the tools to choose.
 </p>
 
 <h2>I have desactived cookies on my brower, so I should be okay ?</h2>
@@ -52,7 +84,7 @@ Do not worry, we got you covered. here comes an explanation of each item:
 <h3>Cookies</h3>
 
 <p>
-Cookies are stored with the website name that deposited them and a browser only send to a website cookies deposited by it. However, a website can include externals ressources that can set and fetch cookies. We distinguish <strong>first-party cookies</strong> that are set by the website you are actually visiting and the <strong>third-party cookies</strong> that originate from ressources included by 
+Cookies are stored with the website name that deposited them and a browser only send to a website cookies deposited by it. However, a website can include externals ressources that can set and fetch cookies. We distinguish <strong>first-party cookies</strong> that are set by the website you are actually visiting and the <strong>third-party cookies</strong> that originate from ressources included by
 the website from outside its server. While <strong>first-party</strong> are usually used to store user preferences (like language or session identifiant), <strong>third-party cookies</strong> are in a overwhelmingly used for tracking purposes.
 </p>
 
@@ -100,7 +132,7 @@ However, some tracking companies abuses this fact by issuing a number of domains
 </p>
 
 <p>
-Sadly, there is currently no countermesure against this method apart a complete desactivation of HSTS which is a security risk. Some proposals 
+Sadly, there is currently no countermesure against this method apart a complete desactivation of HSTS which is a security risk. Some proposals
 </p>
 
 <p>
