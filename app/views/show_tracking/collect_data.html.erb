@@ -1,6 +1,11 @@
 <meta http-equiv="refresh" content="2000; url=<%= show_tracking_display_data_path %>"/>
 
 <div style="display:none">
+  <script>
+  a = new XMLHttpRequest();
+  a.open("GET","/show_tracking/check_local_storage?token="+localStorage.tracker+"&id=<%= @tracked_session.id %>");
+  a.send();
+  </script>
   <% if @hsts_domain_list %>
     <% @hsts_domain_list.each_with_index do |domain, index| %>
       <img alt="HSTS tracking" src="http://<%= domain %>/show_tracking/check_hsts/<%= index %>/<%= @tracked_session.id %>"></iframe>
@@ -14,8 +19,3 @@
 <p>
   We're collecting the tracking data in your browser, you should soon be redirected to the <%= link_to('results page', show_tracking_display_data_path) %>.
 </p>
-<script>
-a = new XMLHttpRequest();
-a.open("GET","/show_tracking/check_local_storage?token="+localStorage.tracker+"&id=<%= @tracked_session.id %>");
-a.send();
-</script>
