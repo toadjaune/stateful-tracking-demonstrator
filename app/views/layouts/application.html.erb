@@ -10,8 +10,26 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <header>
+      <h1> <a href="/">Stateful tracking demo</a> </h1>
+      <ul>
+        <% if user_signed_in? %>
+          <li> <%= current_user %> </li>
+          <li> <%= button_to('Logout', destroy_user_session_path, method: :delete) %></li>
+        <% else %>
+          <li> <%= button_to('Login', new_user_session_path, method: :get) %> </li>
+          <li> <%= button_to('Sign up', new_user_registration_path, method: :get) %> </li>
+        <% end %>
+      </ul>
+    </header>
+    <% if notice != nil %>
+      <p class="notice"><%= notice %></p>
+    <% end %>
+    <% if alert != nil %>
+      <p class="alert"><%= alert %></p>
+    <% end %>
+    <div id="content">
+      <%= yield %>
+    </div>
   </body>
 </html>

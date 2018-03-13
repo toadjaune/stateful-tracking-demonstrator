@@ -27,32 +27,51 @@ html, body {
 }
 
 body {
-	margin: 0;
 	background-color: #333333;
 	color: #e9e9e9;
 	position: relative;
 	min-height: 100vh;
+  margin: 0px;
 }
 
 .hidden {
 	display: none;
 }
-
 .left {
 	float: left;
 }
 .right {
 	float: right;
 }
+.flex-container {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  max-width: 100%;
+}
 
+.notice {
+  background: green;
+  margin-top: 0px;
+  padding: 10px 10px 10px 10px;
+  text-align: center;
+  min-width: 40%;
+}
+
+.alert {
+  background: red;
+  margin-top: 0px;
+  padding: 10px 10px 10px 10px;
+  text-align: center;
+  min-width: 40%;
+}
 
 /* Header */
 header {
 	background-color: #444444;
 	width: 100%;
-	height: 40px;
+	height: 60px;
 	font-family: sans-serif;
-	text-transform: capitalize;
 	padding-left: 20px;
 }
 
@@ -60,7 +79,21 @@ header {
     height: 100%;
 }
 
+header h1 {
+  float: left;
+  max-height: 100%;
+  line-height: 60px;
+  margin-top: 0;
+	text-transform: capitalize;
+}
+
+header h1 a {
+  text-decoration: none;
+  color: #e9e9e9;
+}
+
 header ul {
+  float: right;
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
@@ -71,7 +104,7 @@ header ul {
 header ul li {
 	display: inline-block;
 	padding: 5px 10px;
-	height: 40px;
+	height: 90%;
 	line-height: 30px;
 	text-align: center;
 }
@@ -106,13 +139,13 @@ label {
 table {
 	border-collapse: collapse;
 	margin: auto;
-	margin-top: 10px;
+	margin: 10px 10px 30px 30px;
 	border: 3px solid #666666;
-	width: 100%;
+	max-width: 100%;
 }
 td, th {
 	border: 1px solid #666666;
-	padding: 1px 6px;
+	padding: 3px 8px;
 }
 
 tbody tr:hover {
@@ -137,7 +170,16 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 input[type=number]::placeholder {
-	color:    #a0a0a0;
+	color: #a0a0a0;
+}
+
+input[type=submit] {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+a {
+  color: #5b8ac6;
 }
 
 /* Footer */
@@ -150,7 +192,6 @@ footer {
 	width: 100%;
 	height: 40px;
 }
-
 
 .acceleration-choice {
 	background-color: rgba(200, 200, 200, 0.5);

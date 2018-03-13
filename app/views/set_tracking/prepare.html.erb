@@ -4,55 +4,57 @@
   How long do you want it to last ? If you don't really know, the 5 minutes default is probably a good value.
 </p>
 <%= form_with scope: :set_tracking, url: set_tracking_path, local: true do |form| %>
-
-  <p>
+  <div class="flex-container">
     <table>
       <tr>
-        <th></th>
-        <th>Method</th>
+        <th colspan=2>Which methods ?</th>
       </tr>
       <tr>
-        <td><%= form.check_box :track_first_party_cookie, checked: true %></td>
         <td><%= form.label     :track_first_party_cookie, 'First-party Cookie' %></td>
+        <td><%= form.check_box :track_first_party_cookie, checked: true %></td>
       </tr>
       <tr>
-        <td><%= form.check_box :track_local_storage, checked: true %></td>
         <td><%= form.label     :track_local_storage, 'Local Storage' %></td>
+        <td><%= form.check_box :track_local_storage, checked: true %></td>
       </tr>
       <tr>
+        <td><%= form.label     :track_hsts, 'HSTS Cache' %></td>
         <td><%= form.check_box :track_hsts, checked: true  %></td>
-        <td><%= form.label     :track_hsts, 'HSTS cache' %></td>
       </tr>
       <tr>
+        <td><%= form.label     :track_etag, 'ETag Cache' %></td>
         <td><%= form.check_box :track_etag, checked: true %></td>
-        <td><%= form.label     :track_etag, 'ETag cache' %></td>
       </tr>
       <tr>
-        <td><%= form.check_box :track_hpkp, checked: true %></td>
         <td><%= form.label     :track_hpkp, 'HPKP' %></td>
+        <td><%= form.check_box :track_hpkp, checked: true %></td>
       </tr>
       <tr>
-        <td><%= form.check_box :track_redirection, checked: true %></td>
         <td><%= form.label     :track_redirection, 'Redirection cache' %></td>
+        <td><%= form.check_box :track_redirection, checked: true %></td>
       </tr>
     </table>
-  </p>
-
-  <p>
-    <%= form.number_field :minutes, value: 5 %>
-    <%= form.label :minutes, 'minutes' %>
-  </p>
-  <p>
-    <%= form.number_field :hours, value: 0 %>
-    <%= form.label :hours, 'hours' %>
-  </p>
-  <p>
-    <%= form.number_field :days, value: 0 %>
-    <%= form.label :days, 'days' %>
-  </p>
+  
+    <table>
+      <tr>
+        <th colspan=2>For how long ?</th>
+      </tr>
+      <tr>
+        <td><%= form.number_field :minutes, value: 5 %></td>
+        <td><%= form.label :minutes, 'minutes' %></td>
+      </tr>
+      <tr>
+        <td><%= form.number_field :hours, value: 0 %></td>
+        <td><%= form.label :hours, 'hours' %></td>
+      </tr>
+      <tr>
+        <td><%= form.number_field :days, value: 0 %></td>
+        <td><%= form.label :days, 'days' %></td>
+      </tr>
+    </table>
+  </div>
   <p>
     <%= form.submit 'Start tracking me !'%>
   </p>
-
 <% end %>
-<p> <%= link_to('Back', root_path) %> </p>
+<p> <%= button_to('Back', root_path, method: :get) %> </p>

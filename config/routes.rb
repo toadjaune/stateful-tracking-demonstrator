@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
   post 'hpkp-report',   to: 'hpkp#report'
 
+  get 'about_tracking', to: 'about_tracking#index'
+  
   devise_for :users
   # Since we disabled rails normal js, we can't use the DELETE route, so we need a GET one
   devise_scope :user do
