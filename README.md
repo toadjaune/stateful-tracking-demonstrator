@@ -1,5 +1,35 @@
 # Installation instructions
 
+These installation instructions are made for a Debian server and client.
+It should work on Ubuntu too, but has not been tested on anything else than Debian 9 (Stretch).
+Should you need it, porting this procedure to another distribution should not be difficult.
+
+## For production deployment
+
+
+* For production deployment, you need 2 things :
+  * A server on which you have ssh access (Debian 9 recommended)
+  * A client, with ssh access to the server (can be your laptop, or the server itself, ssh-ing to localhost)
+* First, we're gonna need to install a few packages on the server :
+  * `apt-get install postgresql postgresql-contrib libpq-dev nginx`
+* Then, on the client, we need :
+  * git and ruby : `sudo apt-get install git ruby`
+  * The mina gem : `sudo gem install mina`
+  * This repo : `git clone git@gitlab.centralesupelec.fr:venturi_arn/projet-tracking-web-back.git` (TODO : change this once we move the repo)
+  * `cd projet-tracking-web-back`
+  * `cp config/settings.local.yml.example config/settings.local.yml`
+  * Change the mina configuration in config/settings.local.yml
+  * `mina setup`
+* Now, back on the server, let's configure our application :
+  * `cd` to the location you configured earlier for deployment
+  * TODO : Configuration with sample files
+* On the client :
+  * `mina deploy`
+* TODO : reverse-proxy setup
+
+
+## For development
+
 For now, it is pretty straightforward :
 
 * Install ruby
@@ -12,7 +42,7 @@ For now, it is pretty straightforward :
 * `bundle install`
 * `rails db:setup`
 
-# Handy commands
+## Handy commands
 
 * `rails server` : Start a local development server
 * `rails db:migrate` : Run this whenever there's a new db migration
