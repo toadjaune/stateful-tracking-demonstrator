@@ -1,3 +1,18 @@
+### Deployment configuration ###
+# These configuration options are only useful on a machine you deploy FROM
+# If this is a production server, you don't need to change anything here
+deploy:
+  domain:    'localhost'                 # The name of the server you deploy on
+  user:      'ubuntu'                    # The user you ssh and deploy as
+  deploy_to: '/home/ubuntu/tracker-prod' # The directory to deploy into
+  branch:    'master'                    # git branch to deploy
+
+
+
+### Application configuration ###
+# This configuration is useful both on a machine you develop and on a production machine
+# It is however useless on a machine you do nothing but deploy from
+
 hsts_url_list:
   - "hsts001.tracker.toadjaune.eu"
   - "hsts002.tracker.toadjaune.eu"

@@ -19,10 +19,12 @@ set :branch, 'master'
 #   set :user, 'foobar'          # Username in the server to SSH to.
 #   set :port, '30000'           # SSH port number.
 
+### this is the end of the settings you need to change if you're just deploying ###
+
+### this is the end of the settings you need to change if you're just deploying ###
+
 # SSH Forward Agent required to clone a private repo
 set :forward_agent, true     # SSH forward_agent.
-# Protection against ssh timeouts during ruby installation
-# set :ssh_options, '-o "ServerAliveInterval 120"'
 
 # Shared dirs and files will be symlinked into the app-folder by the 'deploy:link_shared_paths' step.
 # Some plugins already add folders to shared_dirs like `mina/rails` add `public/assets`, `vendor/bundle` and many more
