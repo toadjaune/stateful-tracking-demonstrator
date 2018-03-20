@@ -12,7 +12,8 @@
   <% end %>
 
   <% if @etag %>
-    <img alt="ETag tracking" src="<%= etag_path %>"/>
+    <img alt="ETag tracking" src="<%= "https://tracker.toadjaune.eu/etag" %>"/>
+    <% # TODO : replace this URL by etag_path %>
   <% end %>
 
   <% if @redirection %>
