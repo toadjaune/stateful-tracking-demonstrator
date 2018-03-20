@@ -1,7 +1,8 @@
 <% if user_signed_in? %>
-  <p> <%= button_to('Start tracking me !', set_tracking_path, method: :get) %> </p>
+    <%= button_to('Start tracking me !', set_tracking_path, method: :get) %>
 <% else %>
   <p>Please sign up to enjoy your tracking experience !</p>
 <% end %>
-<p> <%= button_to('Show me how you can recognise me !', show_tracking_path, method: :get) %> </p>
-<p> <%= link_to('Learn more', faq_path) %> </p>
+  <%= button_to('Show me how you can recognise me !', show_tracking_path, method: :get) %> 
+  <%= button_to('Learn more', faq_path, method: :get) %>
+</div>
