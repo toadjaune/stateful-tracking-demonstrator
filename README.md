@@ -24,7 +24,7 @@ Should you need it, porting this procedure to another distribution should not be
   * `cd` to the location you configured earlier for deployment
   * Create and configure the following files in the `shared` directory (you can find example files in the corresponding path in the cloned repo, and copy them over) :
     * `config/database.yml`
-    * `config/secrets.yml` (TODO)
+    * `config/secrets.yml`
     * `config/settings.yml` (TODO)
 * On the client :
   * `mina deploy`
