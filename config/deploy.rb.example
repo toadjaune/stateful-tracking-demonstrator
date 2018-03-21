@@ -54,6 +54,12 @@ task :setup do
   command "echo 'Setup successful !'"
 end
 
+# Initial database setup
+# /!\ DROPS THE DATABASE /!\
+task :drop_and_setup_database do
+  command %{rails db:setup}
+end
+
 desc "Deploys the current version to the server."
 task :deploy do
   # uncomment this line to make sure you pushed your local branch to the remote origin
