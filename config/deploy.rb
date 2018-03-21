@@ -3,6 +3,10 @@ require 'mina/git'
 require 'mina/rbenv'  # for rbenv support. (https://rbenv.org)
 # require 'mina/rvm'    # for rvm support. (https://rvm.io)
 
+### Deployment configuration ###
+# These configuration options are only useful on a machine you deploy FROM
+# If this is a production server, you don't need to change anything here
+
 # Basic settings:
 #   domain       - The hostname to SSH to.
 #   deploy_to    - Path to deploy into.
