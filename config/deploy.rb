@@ -61,17 +61,12 @@ task :deploy do
   deploy do
     # Put things that will set up an empty directory into a fully set-up
     # instance of your project.
-    command %{ruby --version}
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
-    command %{ruby --version}
     command %{rbenv rehash}
     command %{gem install bundler}
     command %{rbenv rehash}
-    command %{which gem}
-    command %{which bundle}
     invoke :'bundle:install'
-    command %{ruby --version}
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
