@@ -23,9 +23,9 @@ Should you need it, porting this procedure to another distribution should not be
 * Now, back on the server, let's configure our application :
   * `cd` to the location you configured earlier for deployment
   * Create and configure the following files in the `shared` directory (you can find example files in the corresponding path in the cloned repo, and copy them over) :
-    * `config/database.yml`
+    * `config/database.yml` (And create the database user as indicated in this file)
     * `config/secrets.yml`
-    * `config/settings.yml` (TODO)
+    * `config/settings.yml`
 * On the client :
   * `mina deploy`
 * TODO : reverse-proxy setup
