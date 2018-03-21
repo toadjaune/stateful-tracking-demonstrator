@@ -17,12 +17,15 @@ Should you need it, porting this procedure to another distribution should not be
   * The mina gem : `sudo gem install mina`
   * This repo : `git clone git@gitlab.centralesupelec.fr:venturi_arn/projet-tracking-web-back.git` (TODO : change this once we move the repo)
   * `cd projet-tracking-web-back`
-  * `cp config/settings.local.yml.example config/settings.local.yml`
-  * Change the mina configuration in config/settings.local.yml
+  * `cp config/deploy.rb.example config/deploy.rb`
+  * Change the mina configuration in config/deploy.rb
   * `mina setup`
 * Now, back on the server, let's configure our application :
   * `cd` to the location you configured earlier for deployment
-  * TODO : Configuration with sample files
+  * Create and configure the following files in the `shared` directory (you can find example files in the corresponding path in the cloned repo, and copy them over) :
+    * `config/database.yml`
+    * `config/secrets.yml` (TODO)
+    * `config/settings.yml` (TODO)
 * On the client :
   * `mina deploy`
 * TODO : reverse-proxy setup
