@@ -27,7 +27,6 @@ Should you need it, porting this procedure to another distribution should not be
     * `config/secrets.yml`
     * `config/settings.yml`
 * On the client :
-  * For the initial setup ONLY : `mina reset_database_and_initial_deploy`
   * `mina deploy`
 * TODO : reverse-proxy setup
 
