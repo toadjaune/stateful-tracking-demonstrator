@@ -1,4 +1,4 @@
-<meta http-equiv="refresh" content="2000; url=<%= root_path %>"/>
+<meta http-equiv="refresh" content="<%= Settings.redirection_delay %>; url=<%= root_path %>"/>
 
 <% if @local_storage %>
   <script>localStorage.setItem("tracker", "<%= @local_storage.to_s %>")</script>
