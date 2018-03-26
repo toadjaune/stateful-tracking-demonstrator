@@ -68,6 +68,9 @@ However, tracking is done without notifying the user being tracked (<i>you</i>) 
   <li> <%= link_to('Cookies', '#cookies', method: :get) %></li>
   <li> <%= link_to('Local Storage', '#lstorage', method: :get) %></li>
   <li> <%= link_to('HSTS Cache', '#hsts', method: :get) %></li>
+  <% if Rails.configuration.hpkp_enabled %>  
+    <li> <%= link_to('HPKP Cache', '#hpkp', method: :get) %></li>
+  <%end%>
   <li> <%= link_to('ETag Caching', '#etag', method: :get) %></li>
   <li> <%= link_to('Redirection caching', '#redirect', method: :get) %></li>
   <li> <%= link_to('Cookies syncing', '#cookiesync', method: :get) %></li>
@@ -121,7 +124,22 @@ Some browsers like Safari disable the use of Local Storage when used on incognit
   <li><a href="https://github.com/gorhill/uMatrix" target="_blank">uMatrix</a></li>
 </ul>
 
-<h3>HSTS Cache</h3>
+<% if Rails.configuration.hpkp_enabled %>  
+<h3 id="hpkp">HPKP Cache</h3>
+
+<p>
+HPKP, for HTTP Public Key Pinning, is a option websites can enable to prevent any malicious people with legitimate Certificate Authorities (<i>i.e</i> mostly governments and big corporations) to impersonate the website. The first time an user connect to a website, it will get an information it will store and use on subsequent connections to check if website has been compromised. If it has been, the user browser terminate the connection to prevent any other security risk.
+</p>
+
+<p>
+However, it is difficult for developers and system administrators to correctly set up this option so there are options named <i>soft-fail</i> and <i>report-only</i> which combined permet user browser to not terminate the connection and send an automatic report to a specified URL.
+</p>
+
+<p>
+Those options can be perverted to track user by giving an identifiant, that will be given back in the report, instead of the legitimate information used to check the website. Sadly, there is no ways to protect oneself against this way of tracking but HPKP is not widly used and supported and is to be unsupported soon by majors browsers.
+</p>
+<%end%>
+<h3 id="hsts">HSTS Cache</h3>
 
 <p>
 HSTS, for Http Strict Transport Security, is a option websites can enable to make sure users access their website with the secure version of HTTP. The first time an user access their website, the server informs the browser that it should be accessed only with the HTTPS protocole and the browser is storing that information to ensure it won't use the insecure channel.

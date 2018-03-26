@@ -51,8 +51,9 @@ class ShowTrackingController < ApplicationController
     @methods[:etag] = extract_data(@tracked_session.etag, 'ETag cache', '#etag')
 
     # HPKP
-    @methods[:hpkp] = extract_data(@tracked_session.hpkp, 'HPKP cache')
-
+    if Rails.configuration.hpkp_enabled
+      @methods[:hpkp] = extract_data(@tracked_session.hpkp, 'HPKP cache', '#hpkp')
+    end
     # HPKP
     @methods[:redirection] = extract_data(@tracked_session.redirection, 'Redirection cache', '#redirect')
   end

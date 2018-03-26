@@ -91,4 +91,7 @@ Rails.application.configure do
 
   # Asked by devise
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  
+  # Custom
+  config.hpkp_enabled = false
 end
