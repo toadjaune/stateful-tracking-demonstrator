@@ -17,7 +17,7 @@ set :application_name, 'tracker'
 set :domain, 'tracker.toadjaune.eu'
 set :deploy_to, '/home/toadjaune/tracker'
 set :repository, 'git@gitlab.centralesupelec.fr:venturi_arn/projet-tracking-web-back.git'
-set :branch, 'master'
+set :branch, 'config'
 
 # Optional settings:
 #   set :user, 'foobar'          # Username in the server to SSH to.
@@ -43,6 +43,8 @@ task :remote_environment do
   # Be sure to commit your .ruby-version or .rbenv-version to your repository.
   invoke :'rbenv:load'
 
+  command %{ export RAILS_ENV=production  }
+
   # For those using RVM, use this to load an RVM version@gemset.
   # invoke :'rvm:use', 'ruby-1.9.3-p125@default'
 end
@@ -54,10 +56,23 @@ task :setup do
   command "echo 'Setup successful !'"
 end
 
+task :common_env_setup do
+  invoke :'git:clone'
+  invoke :'deploy:link_shared_paths'
+  command %{rbenv rehash}
+  command %{gem install bundler}
+  command %{rbenv rehash}
+  invoke :'bundle:install'
+  command %{rbenv rehash}
+end
 # Initial database setup
 # /!\ DROPS THE DATABASE /!\
-task :drop_and_setup_database do
-  command %{rails db:setup}
+task :reset_database_and_initial_deploy do
+  deploy do
+    invoke :common_env_setup
+    invoke :'rails:db_create'
+  end
+  invoke :deploy
 end
 
 desc "Deploys the current version to the server."
@@ -67,13 +82,7 @@ task :deploy do
   deploy do
     # Put things that will set up an empty directory into a fully set-up
     # instance of your project.
-    invoke :'git:clone'
-    invoke :'deploy:link_shared_paths'
-    command %{rbenv rehash}
-    command %{gem install bundler}
-    command %{rbenv rehash}
-    invoke :'bundle:install'
-    command %{rbenv rehash}
+    invoke :common_env_setup
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
@@ -83,7 +92,7 @@ task :deploy do
         # Stop current instance if it exists
         command %{if `tmux has-session -t tracker-prod` ; then `tmux kill-session -t tracker-prod`; fi}
         # Start new instance
-        command %{tmux new-session -s tracker-prod -d rails server}
+        command %{tmux new-session -s tracker-prod -d 'eval "$(rbenv init -)" && bin/rails server'}
       end
     end
   end

@@ -30,13 +30,13 @@ rspec:
     - bundle exec rspec
 
 # Deploy the dev instance of the code
-deploy_dev:
-  tags:
-    - projet-tracker-vm
-  script:
-    - if `tmux has-session -t tracker-dev` ; then `tmux kill-session -t tracker-dev`; fi
-    - rm -rf $HOME/tracker-dev-instance
-    - cp -r . $HOME/tracker-dev-instance
-    - cd $HOME/tracker-dev-instance
-    - rails db:migrate
-    - tmux new-session -s tracker-dev -d rails server
+# deploy_dev:
+#   tags:
+#     - projet-tracker-vm
+#   script:
+#     - if `tmux has-session -t tracker-dev` ; then `tmux kill-session -t tracker-dev`; fi
+#     - rm -rf $HOME/tracker-dev-instance
+#     - cp -r . $HOME/tracker-dev-instance
+#     - cd $HOME/tracker-dev-instance
+#     - rails db:migrate
+#     - tmux new-session -s tracker-dev -d rails server
