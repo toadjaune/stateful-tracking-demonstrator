@@ -17,13 +17,11 @@ set :application_name, 'tracker'
 set :domain, 'tracker.toadjaune.eu'
 set :deploy_to, '/home/toadjaune/tracker'
 set :repository, 'git@gitlab.centralesupelec.fr:venturi_arn/projet-tracking-web-back.git'
-set :branch, 'config'
+set :branch, 'master'
 
 # Optional settings:
 #   set :user, 'foobar'          # Username in the server to SSH to.
 #   set :port, '30000'           # SSH port number.
-
-### this is the end of the settings you need to change if you're just deploying ###
 
 ### this is the end of the settings you need to change if you're just deploying ###
 
