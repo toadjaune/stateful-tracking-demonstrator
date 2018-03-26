@@ -198,6 +198,10 @@ input[type=submit] {
   border-radius: 4px;
 }
 
+input[type=submit]:hover {
+  background-color: #555555;
+}
+
 a {
   color: #5b8ac6;
 }
