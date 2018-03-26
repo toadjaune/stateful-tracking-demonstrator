@@ -13,6 +13,7 @@
       <th> Is it you ? </th>
     <% end %>
     <th> Set at : </th>
+    <th> See more details </th>
   </tr>
   <% @methods.each do |key,method| %>
     <tr>
@@ -22,6 +23,7 @@
         <td> <%= method[:correct] %> </td>
       <% end %>
       <td> <%= method[:created_at] %> </td>
+      <td> <%= link_to('FAQ', faq_path + method[:shortname], method: :get) %> </td>
     </tr>
   <% end %>
 </table>

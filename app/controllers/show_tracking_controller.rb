@@ -39,22 +39,22 @@ class ShowTrackingController < ApplicationController
     @methods = {}
 
     # 1st-party cookie
-    @methods[:first_party_cookie] = extract_data(FirstPartyCookie.find_by(token: cookies[:tracker]), 'First party Cookie')
+    @methods[:first_party_cookie] = extract_data(FirstPartyCookie.find_by(token: cookies[:tracker]), 'First party Cookie', '#cookies')
 
     # LocalStorage
-    @methods[:local_storage] = extract_data(@tracked_session.local_storage, 'Local Storage')
+    @methods[:local_storage] = extract_data(@tracked_session.local_storage, 'Local Storage', '#lstorage')
 
     # HSTS
-    @methods[:hsts] = extract_data(@tracked_session.hsts, 'HSTS cache')
+    @methods[:hsts] = extract_data(@tracked_session.hsts, 'HSTS cache', '#hsts')
 
     # ETag
-    @methods[:etag] = extract_data(@tracked_session.etag, 'ETag cache')
+    @methods[:etag] = extract_data(@tracked_session.etag, 'ETag cache', '#etag')
 
     # HPKP
     @methods[:hpkp] = extract_data(@tracked_session.hpkp, 'HPKP cache')
 
     # HPKP
-    @methods[:redirection] = extract_data(@tracked_session.redirection, 'Redirection cache')
+    @methods[:redirection] = extract_data(@tracked_session.redirection, 'Redirection cache', '#redirect')
   end
 
   private
@@ -63,12 +63,13 @@ class ShowTrackingController < ApplicationController
     @tracked_session.first_party_cookie = FirstPartyCookie.find_by(token: cookies[:tracker])
   end
 
-  def extract_data(object, display_name)
+  def extract_data(object, display_name, anchor_name)
     {
       name:       display_name,
       worked:     ! object.nil?, # Do we think we found a tracked user ?
       correct:    user_signed_in? && current_user == object&.user, # Is it the user currently logged in ?
-      created_at: object&.created_at
+      created_at: object&.created_at,
+      shortname: anchor_name
     }
   end
 end

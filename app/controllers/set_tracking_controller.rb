@@ -63,7 +63,6 @@ class SetTrackingController < ApplicationController
 
     # ETags
     @etag = set_tracking_params[:track_etag] == '1'
-    p @etag
 
     # HPKP
     # TODO : permettre de mettre le nom de domaine en configuration de l'application
