@@ -3,7 +3,7 @@ class HpkpController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def report
-    if Rails.configuration.hpkp_enabled
+    if Settings.hpkp_enabled
       session_id = params[:hostname].split(/\./)[0]
       pin = params[:"known-pins"][0].split(/sha256=/)[1].delete "\""
       s = TrackedSession.find_or_create_by(session_id: session_id)

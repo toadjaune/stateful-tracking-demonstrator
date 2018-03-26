@@ -25,7 +25,7 @@
         <td><%= form.label     :track_etag, 'ETag Cache' %></td>
         <td><%= form.check_box :track_etag, checked: true %></td>
       </tr>
-  <% if Rails.configuration.hpkp_enabled %>  
+  <% if Settings.hpkp_enabled %>
       <tr>
         <td><%= form.label     :track_hpkp, 'HPKP' %></td>
         <td><%= form.check_box :track_hpkp, checked: true %></td>

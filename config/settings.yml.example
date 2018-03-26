@@ -13,3 +13,4 @@ hsts_url_list:
   - "hsts008.tracker.toadjaune.eu"
   - "hsts009.tracker.toadjaune.eu"
   - "hsts010.tracker.toadjaune.eu"
+hpkp_enabled: false

@@ -68,7 +68,7 @@ However, tracking is done without notifying the user being tracked (<i>you</i>) 
   <li> <%= link_to('Cookies', '#cookies', method: :get) %></li>
   <li> <%= link_to('Local Storage', '#lstorage', method: :get) %></li>
   <li> <%= link_to('HSTS Cache', '#hsts', method: :get) %></li>
-  <% if Rails.configuration.hpkp_enabled %>  
+  <% if Settings.hpkp_enabled %>
     <li> <%= link_to('HPKP Cache', '#hpkp', method: :get) %></li>
   <%end%>
   <li> <%= link_to('ETag Caching', '#etag', method: :get) %></li>
@@ -124,7 +124,7 @@ Some browsers like Safari disable the use of Local Storage when used on incognit
   <li><a href="https://github.com/gorhill/uMatrix" target="_blank">uMatrix</a></li>
 </ul>
 
-<% if Rails.configuration.hpkp_enabled %>  
+<% if Settings.hpkp_enabled %>
 <h3 id="hpkp">HPKP Cache</h3>
 
 <p>
