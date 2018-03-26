@@ -22,3 +22,6 @@ hsts_url_list:
 # You need a wildcard delivered by a Certificate Authority present in the default Cert Store
 # of Firefox/Chrome for this to work. (And even then, it's not tested)
 hpkp_enabled: false
+
+# Duration (in seconds) to stay on the set_tracking and result collecting pages before redirecting
+redirection_delay: 2
