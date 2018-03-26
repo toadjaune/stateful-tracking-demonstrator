@@ -2,6 +2,8 @@
 # Create it with :
 #
 # $ sudo -Eu postgres createuser -d $USER
+#
+# Uncomment the development and test environments if required
 
 default: &default
   adapter: postgresql
@@ -9,17 +11,17 @@ default: &default
   timeout: 5000
   encoding: utf8
 
-development:
-  <<: *default
-  database: tracking_dev
+# development:
+#   <<: *default
+#   database: tracking_dev
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
-test:
-  <<: *default
-  database: tracking_test
-
-# production:
+# test:
 #   <<: *default
-#   database: tracking_prod
+#   database: tracking_test
+
+production:
+  <<: *default
+  database: tracking_prod

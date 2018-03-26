@@ -1,0 +1,15 @@
+### Application configuration ###
+# This configuration is useful both on a machine you develop and on a production machine
+# It is however useless on a machine you do nothing but deploy from
+
+hsts_url_list:
+  - "hsts001.tracker.toadjaune.eu"
+  - "hsts002.tracker.toadjaune.eu"
+  - "hsts003.tracker.toadjaune.eu"
+  - "hsts004.tracker.toadjaune.eu"
+  - "hsts005.tracker.toadjaune.eu"
+  - "hsts006.tracker.toadjaune.eu"
+  - "hsts007.tracker.toadjaune.eu"
+  - "hsts008.tracker.toadjaune.eu"
+  - "hsts009.tracker.toadjaune.eu"
+  - "hsts010.tracker.toadjaune.eu"

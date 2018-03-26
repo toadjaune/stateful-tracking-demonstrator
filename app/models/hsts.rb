@@ -16,19 +16,7 @@ class Hsts < ApplicationRecord
   validates_presence_of   :token_ary
   validates_uniqueness_of :token_ary
 
-  # This is currently hardcoded, TODO : migrate it to a configuration option
-  HSTS_URL_LIST = [
-    "hsts001.tracker.toadjaune.eu",
-    "hsts002.tracker.toadjaune.eu",
-    "hsts003.tracker.toadjaune.eu",
-    "hsts004.tracker.toadjaune.eu",
-    "hsts005.tracker.toadjaune.eu",
-    "hsts006.tracker.toadjaune.eu",
-    "hsts007.tracker.toadjaune.eu",
-    "hsts008.tracker.toadjaune.eu",
-    "hsts009.tracker.toadjaune.eu",
-    "hsts010.tracker.toadjaune.eu"
-  ]
+  HSTS_URL_LIST = Settings.hsts_url_list
 
   # Whenever we create a new token, initialize it to a random value
   after_initialize do

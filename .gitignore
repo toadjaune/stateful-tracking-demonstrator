@@ -21,3 +21,12 @@
 /yarn-error.log
 
 .byebug_history
+
+# Ignore local configuration and secrets
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml
+config/database.yml
+config/secrets.yml
+config/settings.yml
+config/deploy.rb
