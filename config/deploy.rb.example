@@ -80,7 +80,7 @@ task :deploy do
         # Stop current instance if it exists
         command %{if `tmux has-session -t tracker-prod` ; then `tmux kill-session -t tracker-prod`; fi}
         # Start new instance
-        command %{tmux new-session -s tracker-prod -d 'eval "$(rbenv init -)" && bin/rails server'}
+        command %{tmux new-session -s tracker-prod -d 'eval "$(rbenv init -)" && RAILS_ENV=production bin/rails server'}
       end
     end
   end
