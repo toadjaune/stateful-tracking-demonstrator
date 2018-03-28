@@ -12,8 +12,7 @@
   <% end %>
 
   <% if @etag %>
-    <img alt="ETag tracking" src="<%= "https://tracker.toadjaune.eu/etag" %>"/>
-    <% # TODO : replace this URL by etag_path %>
+    <img alt="ETag tracking" src="<%= "https://#{Settings.main_domain}/etag" %>"/>
   <% end %>
 
   <% if @redirection %>
@@ -23,5 +22,5 @@
 </div>
 
 <p>
-  We just finished setting up your tracking, you should now be redirected to the <%= link_to('home path', root_path) %>.
+  We're currently setting up your tracking, you should soon be redirected to the <%= link_to('home path', root_path) %>.
 </p>

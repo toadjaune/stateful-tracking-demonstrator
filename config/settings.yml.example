@@ -2,6 +2,9 @@
 # This configuration is useful both on a machine you develop and on a production machine
 # It is however useless on a machine you do nothing but deploy from
 
+# The main domain of your website
+main_domain: "tracker.toadjaune.eu"
+
 # Your certificate must be valid for each one of these.
 # Make sure you have enough of them, as each new tracking will encode a new unique id on these.
 # Therefore, there are 2^(number of domains here) possible tokens

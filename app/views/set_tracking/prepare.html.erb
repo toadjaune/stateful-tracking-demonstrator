@@ -1,7 +1,9 @@
 <h1> Let's get tracked ! </h1>
 <p>
   We're about to set up different tracking methods in your browser.<br/>
-  How long do you want it to last ? If you don't really know, the 5 minutes default is probably a good value.
+  Some of these will expire after a certain amount of time, how long do you want them to last ?
+  If you don't really know, the 5 minutes default is probably a good value.<br/>
+  Please also note that because of the way we implement HSTS tracking, setting it up twice without waiting for the first one to expire will mix them and fail to recognize you.
 </p>
 <%= form_with scope: :set_tracking, url: set_tracking_path, local: true do |form| %>
   <div class="flex-container">
@@ -30,13 +32,13 @@
         <td><%= form.label     :track_hpkp, 'HPKP' %></td>
         <td><%= form.check_box :track_hpkp, checked: true %></td>
       </tr>
-  <% end %>  
+  <% end %>
       <tr>
         <td><%= form.label     :track_redirection, 'Redirection cache' %></td>
         <td><%= form.check_box :track_redirection, checked: true %></td>
       </tr>
     </table>
-  
+
     <table>
       <tr>
         <th colspan=2>For how long ?</th>

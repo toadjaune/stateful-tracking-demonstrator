@@ -33,7 +33,6 @@ class ShowTrackingController < ApplicationController
   end
 
   def display_data
-    p session[:tracked_session_id]
     @tracked_session = TrackedSession.where(session_id: request.session_options[:id]).last
     # Recover all the information about the different tracking methods
     @methods = {}
