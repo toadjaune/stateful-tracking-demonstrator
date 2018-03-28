@@ -65,10 +65,9 @@ class SetTrackingController < ApplicationController
     @etag = set_tracking_params[:track_etag] == '1'
 
     # HPKP
-    # TODO : permettre de mettre le nom de domaine en configuration de l'application
     if Settings.hpkp_enabled && set_tracking_params[:track_hpkp] == '1'
       @hpkp = Hpkp.create(user: current_user)
-      response.set_header('Public-Key-Pins-Report-Only', 'max-age=' + duration.to_s + ';' + 'pin-sha256="' + @hpkp.to_s + '";' + 'pin-sha256=' + SecureRandom.base64(256) + ';' + 'report-uri=http://tracker.cs-campus.fr/hpkp-report; includeSubDomains')
+      response.set_header('Public-Key-Pins-Report-Only', 'max-age=' + duration.to_s + ';' + 'pin-sha256="' + @hpkp.to_s + '";' + 'pin-sha256=' + SecureRandom.base64(256) + ';' + "report-uri=http://#{Settings.main_domain}/hpkp-report; includeSubDomains")
     end
 
     # Redirections

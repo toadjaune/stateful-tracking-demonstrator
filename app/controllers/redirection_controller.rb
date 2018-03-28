@@ -14,8 +14,7 @@ class RedirectionController < ApplicationController
       session[:tracked_session_id] = nil
       redirection_token = Redirection.create!(user: current_user).token
       response.set_header('Content-Type', 'text/css')
-      # TODO : find a clean way to do this
-      redirect_to 'https://tracker.toadjaune.eu/redirection/' + redirection_token, status: 301
+      redirect_to "https://#{Settings.main_domain}/redirection/" + redirection_token, status: 301
     else
       # Not supposed to happen
       render content_type: 'text/css', plain: "img{ border:none; }"
