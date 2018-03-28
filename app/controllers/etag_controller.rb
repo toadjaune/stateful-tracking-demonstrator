@@ -12,11 +12,14 @@ class EtagController < ApplicationController
       response.set_header('Cache-Control', 'private, must-revalidate')
       render content_type: 'image/png', plain: open('public/1pixel.png', 'rb').read
     elsif request.headers['Referer']&.include? 'show_tracking'
-      p request.session_options[:id]
       tracked_session = TrackedSession.where(session_id: request.session_options[:id]).last
       tracked_session.etag = Etag.find_by(token: request.headers['If-None-Match'])
       tracked_session.save!
       response.set_header('Cache-Control', 'private, must-revalidate')
+      p 'etag_controller'
+      p request.session_options[:id]
+      p tracked_session.id
+      p tracked_session.etag
       # Note that we return 304 Not Modified regardless of the result. It should not be an issue.
       head :not_modified
     else

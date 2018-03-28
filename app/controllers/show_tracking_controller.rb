@@ -12,6 +12,9 @@ class ShowTrackingController < ApplicationController
 
     # This is used to find the correct session in some tracking methods
     session[:tracked_session_id] = @tracked_session.id
+    p 'show_tracking_controller'
+    p request.session_options[:id]
+    p @tracked_session.id
   end
 
   # NB : The view generates a call to this endpoint per hsts subdomain
