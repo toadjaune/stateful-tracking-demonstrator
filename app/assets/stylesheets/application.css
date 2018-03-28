@@ -35,6 +35,10 @@ body {
   font-family: "DejaVu", serif; 
 }
 
+section {
+  line-height: 22px;
+}
+
 .hidden {
 	display: none;
 }

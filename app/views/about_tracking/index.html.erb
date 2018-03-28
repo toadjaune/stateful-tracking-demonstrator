@@ -1,188 +1,242 @@
 <h2>What is stateful tracking ?</h2>
-
-<p>There are many ways for a website to recognize a user, but for the sake of this explanation, we'll set up two categories :<p>
-<ul>
-  <li> Stateless tracking </li>
-  <li> Stateful tracking </li>
-</ul>
+<section>
+  <p>
+  There are many ways for a website to recognize a user, but for the sake of this explanation, we'll set up two categories :
+  </p>
+  
+  <ul>
+    <li> Stateless tracking </li>
+    <li> Stateful tracking </li>
+  </ul>
+</section>
 
 <h3> Stateless tracking </h3>
-<p>
-Stateless tracking is about fetching the characteristics of your browser and your device, and group them to build a unique identifier of your browser, called a fingerprint.
-Since this type of tracking does not rely on storing anything in your browser, but only on reading its characteristics, you can't "clear" anything.
-It is however possible to reduce the amount of information leaked by your browser, which makes it harder for the website owner to get a unique fingerprint for each user.
-</p>
-<p>
-This website does not address this type of tracking, but we recommend you to have a look at websites such as <a href="https://panopticlick.eff.org/" target="_blank">Panopticlick</a> or <a href="https://amiunique.org/" target="_blank">Am I Unique?</a>, which cover this topic quite extensively.
-</p>
+<section>
+  <p>
+  Stateless tracking is about fetching the characteristics of your browser and your device, and group them to build a unique identifier of your browser, called a fingerprint.
+  Since this type of tracking does not rely on storing anything in your browser, but only on reading its characteristics, you can't "clear" anything.
+  It is however possible to reduce the amount of information leaked by your browser, which makes it harder for the website owner to get a unique fingerprint for each user.
+  </p>
+
+  <p>
+  This website does not address this type of tracking, but we recommend you to have a look at websites such as <a href="https://panopticlick.eff.org/" target="_blank">Panopticlick</a> or <a href="https://amiunique.org/" target="_blank">Am I Unique?</a>, which cover this topic quite extensively.
+  </p>
+</section>
 
 <h3> Stateful tracking </h3>
-<p>
-Here, the tracking is done in two steps :
-<ul>
-  <li> During the first visit of a user, the website stores identifying information in the browser</li>
-  <li> During each subsequent visit, the website retrieves the information previously stored, and uses it to link your new session to the previous ones. If required, it will also refresh the tracking information for your next visit</li>
-</ul>
-In this case, in theory, absolutely nothing prevents you from erasing this tracking information.
+<section>
+  <p>Here, the tracking is done in two steps :</p>
+  <ul>
+    <li> During the first visit of a user, the website stores identifying information in the browser</li>
+    <li> During each subsequent visit, the website retrieves the information previously stored, and uses it to link your new session to the previous ones. If required, it will also refresh the tracking information for your next visit</li>
+  </ul>
+
+  <p>
+  In this case, in theory, absolutely nothing prevents you from erasing this tracking information.
 However, as you'll be able to notice on this website, it is often complicated, if not impossible to do.
-</p>
+  </p>
+</section>
 
 <h2> Why do we even allow that ?</h2>
+<section>
+  <p>
+  There are different cases leading to potential tracking.
+  </p>
 
-<p>
-There are different cases leading to potential tracking.
-</p>
-<p>
-First off, for some technologies, tracking is the primary objective.
-The most common and basic way to track a user on a website is called a <a href="https://en.wikipedia.org/wiki/HTTP_cookie" target="_blank">cookie</a>.
-It is a small bit of data that a website can store on your browser, and that your browser will then send back with every request you make.
-This is extremely useful, for example to keep you logged in between two visits on a website, or to store your preferences (theme, language…), or some short-lived informations (product selection in an e-commerce website).
-However, nothing can prevent a website from using them to do anything else they want with it.
-</p>
-<p>
-Then, there are many other technologies, which have a totally different purpose, but can be misused to track the user.
-Most of them rely on <i>cache</i>.
-Caching is a very important element of the web ; basically it's the very simple idea that if you download some data once (for example, the Google landing page logo), you can keep it saved on your computer and use it every time you search something on Google, instead of downloading it again every time.
-The thing is that there is a difference of behaviour between a browser in which some data is cached, and the one in which it's not.
-To keep going with our example, your browser is not going to download the image again if it's not its first visit, which can be detected by the image provider, here Google.
-In this example, we obviously can't identify you with such a small amount of information (<i>i.e.</i> whether you did download the image or not), but in more complex scenarios, it is possible.
-</p>
+  <p>
+  First off, for some technologies, tracking is the primary objective.
+  The most common and basic way to track a user on a website is called a <a href="https://en.wikipedia.org/wiki/HTTP_cookie" target="_blank">cookie</a>.
+  It is a small bit of data that a website can store on your browser, and that your browser will then send back with every request you make.
+  This is extremely useful, for example to keep you logged in between two visits on a website, or to store your preferences (theme, language…), or some short-lived informations (product selection in an e-commerce website).
+  However, nothing can prevent a website from using them to do anything else they want with it.
+  </p>
+  
+  <p>
+  Then, there are many other technologies, which have a totally different purpose, but can be misused to track the user.
+  Most of them rely on <i>cache</i>.
+  Caching is a very important element of the web ; basically it's the very simple idea that if you download some data once (for example, the Google landing page logo), you can keep it saved on your computer and use it every time you search something on Google, instead of downloading it again every time.
+  The thing is that there is a difference of behaviour between a browser in which some data is cached, and the one in which it's not.
+  To keep going with our example, your browser is not going to download the image again if it's not its first visit, which can be detected by the image provider, here Google.
+  In this example, we obviously can't identify you with such a small amount of information (<i>i.e.</i> whether you did download the image or not), but in more complex scenarios, it is possible.
+  </p>
+</section>
 
 <h2> Why should I care ?</h2>
-<p>
-Short version : tracking you allows websites to sell information about you, and this can then have bad consequences on you.
+<section>
+  <p>
+  Short version : tracking you allows websites to sell information about you and customized their content for you, and this can then have bad consequences on you.
 This is however a very complex topic, but fortunately, there is extensive documentation on it all over the Internet, here are a couple online resources that you can start with :
-</p>
-<ul>
-  <li> <a href="https://www.eff.org/issues/privacy" target="_blank">The Electronic Frontier Fondation website</a> </li>
-  <li> <a href="https://ellajdesigns.com/tracking-web-analytics/" target="_blank">Explaination of the business consequences of analytics</a>
-</ul>
+  </p>
+  
+  <ul>
+    <li> <a href="https://www.eff.org/issues/privacy" target="_blank">The Electronic Frontier Fondation website</a> </li>
+    <li> <a href="https://ellajdesigns.com/tracking-web-analytics/" target="_blank">Explaination of the business consequences of analytics</a>
+  </ul>
 
-<p>
-However, tracking is done without notifying the user being tracked (<i>you</i>) which is problematic. While it should the user's choice if he wants to be tracked or not, we have constated that the general public is not aware of how the tracking is done and how to protect oneself against it. Ultimately, we give you the tools to choose.
-</p>
+  <p>
+  However, tracking is done without notifying the user being tracked (<i>you</i>) which is problematic. While it should the user's choice if he wants to be tracked or not, we have constated that the general public is not aware of how the tracking is done and how to protect oneself against it. Ultimately, we give you the tools to choose.
+  </p>
+</section>
 
 <h2>I have desactived cookies on my brower, so I should be okay ?</h2>
-<p> Here is a list of common means for a website to track you: </p>
-<ul>
-  <li> <%= link_to('Cookies', '#cookies', method: :get) %></li>
-  <li> <%= link_to('Local Storage', '#lstorage', method: :get) %></li>
-  <li> <%= link_to('HSTS Cache', '#hsts', method: :get) %></li>
+<section>
+  <p> Here is a list of common means for a website to track you: </p>
+  <ul>
+    <li> <%= link_to('Cookies', '#cookies', method: :get) %></li>
+    <li> <%= link_to('Local Storage', '#lstorage', method: :get) %></li>
+    <li> <%= link_to('HSTS Cache', '#hsts', method: :get) %></li>
   <% if Settings.hpkp_enabled %>
     <li> <%= link_to('HPKP Cache', '#hpkp', method: :get) %></li>
   <%end%>
-  <li> <%= link_to('ETag Caching', '#etag', method: :get) %></li>
-  <li> <%= link_to('Redirection caching', '#redirect', method: :get) %></li>
-  <li> <%= link_to('Cookies syncing', '#cookiesync', method: :get) %></li>
-</ul>
+    <li> <%= link_to('ETag Caching', '#etag', method: :get) %></li>
+    <li> <%= link_to('Redirection caching', '#redirect', method: :get) %></li>
+    <li> <%= link_to('Cookies syncing', '#cookiesync', method: :get) %></li>
+  </ul>
 
-<p> As you can see, there is a lot of means not relying on cookies which means you can still be tracked. Furthermore, only one way is relying on JavaScript so even usage of plugins like <a href="https://noscript.net/" target="_blank">NoScript</a> is not enough to protect you. </p>
+  <p> 
+  As you can see, there is a lot of means not relying on cookies which means you can still be tracked. Furthermore, only one way is relying on JavaScript so even usage of plugins like <a href="https://noscript.net/" target="_blank">NoScript</a> is not enough to protect you.
+  </p>
+</section>
 
 <h2> I did not understand a single thing in your list !</h2>
-
-<p>
-Do not worry, we got you covered. here comes an explanation of each item:
-</p>
+<section>
+  <p>
+  Do not worry, we got you covered. here comes an explanation of each item:
+  </p>
+</section>
 
 <h3 id="cookies">Cookies</h3>
-
-<p>
+<section>
+  <p>
 Cookies are stored with the website name that deposited them and a browser only send to a website cookies deposited by it. However, a website can include externals ressources that can set and fetch cookies. We distinguish <strong>first-party cookies</strong> that are set by the website you are actually visiting and the <strong>third-party cookies</strong> that originate from ressources included by
 the website from outside its server. While <strong>first-party</strong> are usually used to store user preferences (like language or session identifiant), <strong>third-party cookies</strong> are in a overwhelmingly used for tracking purposes.
-</p>
+  </p>
 
-<p>
-Websites can manipulate cookies with two ways : HTTP headers and JavaScript. User browser can refuse them at any time. You can install browser extensions to protect yourself against this :
-</p>
-<ul>
-  <li> <a href="https://chrome.google.com/webstore/detail/editthiscookie/fngmhnnpilhplaeedifhccceomclgfbg" target="_blank">Extension for Chrome</a> </li>
-  <li> <a href="https://addons.mozilla.org/en-US/firefox/addon/self-destructing-cookies-1/" target="_blank">Extension for Firefox</a> </li>
-</ul>
+  <p>
+  Websites can manipulate cookies with two ways : HTTP headers and JavaScript. User browser can refuse them at any time. You can install browser extensions to protect yourself against this :
+  </p>
+  
+  <ul>
+    <li> <a href="https://chrome.google.com/webstore/detail/editthiscookie/fngmhnnpilhplaeedifhccceomclgfbg" target="_blank">Extension for Chrome</a> </li>
+    <li> <a href="https://addons.mozilla.org/en-US/firefox/addon/self-destructing-cookies-1/" target="_blank">Extension for Firefox</a> </li>
+  </ul>
 
-If you want to know more about cookies, we can advise you to consult this <a href="https://en.wikipedia.org/wiki/HTTP_cookie" target="_blank">Wikipedia article</a>.
+  <p>
+  If you want to know more about cookies, we can advise you to consult this <a href="https://en.wikipedia.org/wiki/HTTP_cookie" target="_blank">Wikipedia article</a>.
+  </p>
+</section>
 
 <h3 id="lstorage">Local storage</h3>
+<section>
+  <p>
+  Local Storage has been created in reaction of the cookie system. The improvements are :
+  </p>
+  
+  <ul>
+    <li> More space for storage </li>
+    <li> Better privacy and lower bandwidth usage since it is never send to server </li>
+    <li> Storage is well compartimented, which was not the default for cookies </li>
+  </ul>
 
-<p>
-Local Storage has been created in reaction of the cookie system. The improvements are :
-</p>
-<ul>
-  <li> More space for storage </li>
-  <li> Better privacy and lower bandwidth usage since it is never send to server </li>
-  <li> Storage is well compartimented, which was not the default for cookies </li>
-</ul>
+  <p>
+  The major drawback is that Local Storage is only available from browser thus making JavaScript, or any other way to execute code client-side like Java applet or Flash, mandatory.
+  </p>
 
-<p>
-The major drawback is that Local Storage is only available from browser thus making JavaScript, or any other way to execute code client-side like Java applet or Flash, mandatory.
-</p>
+  <p>
+  Some browsers like Safari disable the use of Local Storage when used on incognito, sometimes named private, mode. You can also <a href="https://www.wikihow.com/Disable-JavaScript" target="_blank">desactivate</a> (<i>Note: disabling JavaScript can greatly hinder your browsing experience</i>) or restrict JavaScript usage with browser settings or extensions like the following to prevent the use of this method :
+  </p>
 
-<p>
-Some browsers like Safari disable the use of Local Storage when used on incognito, sometimes named private, mode. You can also <a href="https://www.wikihow.com/Disable-JavaScript" target="_blank">desactivate</a> (<i>Note: disabling JavaScript can greatly hinder your browsing experience</i>) or restrict JavaScript usage with browser settings or extensions like the following to prevent the use of this method :
-</p>
-<ul>
-  <li><a href="https://noscript.net/" target="_blank">NoScript</a></li>
-  <li><a href="https://github.com/gorhill/uMatrix" target="_blank">uMatrix</a></li>
-</ul>
+  <ul>
+    <li><a href="https://noscript.net/" target="_blank">NoScript</a></li>
+    <li><a href="https://github.com/gorhill/uMatrix" target="_blank">uMatrix</a></li>
+  </ul>
+</section>
 
 <% if Settings.hpkp_enabled %>
 <h3 id="hpkp">HPKP Cache</h3>
+<section>
+  <p>
+  HPKP, for HTTP Public Key Pinning, is a option websites can enable to prevent any malicious people with legitimate Certificate Authorities (<i>i.e</i> mostly governments and big corporations) to impersonate the website. The first time an user connect to a website, it will get an information it will store and use on subsequent connections to check if website has been compromised. If it has been, the user browser terminate the connection to prevent any other security risk.
+  </p>
 
-<p>
-HPKP, for HTTP Public Key Pinning, is a option websites can enable to prevent any malicious people with legitimate Certificate Authorities (<i>i.e</i> mostly governments and big corporations) to impersonate the website. The first time an user connect to a website, it will get an information it will store and use on subsequent connections to check if website has been compromised. If it has been, the user browser terminate the connection to prevent any other security risk.
-</p>
+  <p>
+  However, it is difficult for developers and system administrators to correctly set up this option so there are options named <i>soft-fail</i> and <i>report-only</i> which combined permet user browser to not terminate the connection and send an automatic report to a specified URL.
+  </p>
 
-<p>
-However, it is difficult for developers and system administrators to correctly set up this option so there are options named <i>soft-fail</i> and <i>report-only</i> which combined permet user browser to not terminate the connection and send an automatic report to a specified URL.
-</p>
-
-<p>
-Those options can be perverted to track user by giving an identifiant, that will be given back in the report, instead of the legitimate information used to check the website. Sadly, there is no ways to protect oneself against this way of tracking but HPKP is not widly used and supported and is to be unsupported soon by majors browsers.
-</p>
+  <p>
+  Those options can be perverted to track user by giving an identifiant, that will be given back in the report, instead of the legitimate information used to check the website. Sadly, there is no ways to protect oneself against this way of tracking but HPKP is not widly used and supported and is to be unsupported soon by majors browsers.
+  </p>
+</section>
 <%end%>
+
 <h3 id="hsts">HSTS Cache</h3>
+<section>
+  <p>
+  HSTS, for Http Strict Transport Security, is a option websites can enable to make sure users access their website with the secure version of HTTP. The first time an user access their website, the server informs the browser that it should be accessed only with the HTTPS protocole and the browser is storing that information to ensure it won't use the insecure channel.
+  </p>
 
-<p>
-HSTS, for Http Strict Transport Security, is a option websites can enable to make sure users access their website with the secure version of HTTP. The first time an user access their website, the server informs the browser that it should be accessed only with the HTTPS protocole and the browser is storing that information to ensure it won't use the insecure channel.
-</p>
+  <p>
+  However, some tracking companies abuses this fact by issuing a number of domains and telling every user that a different subset of them are HTTPS-only with HSTS and can check with subset is accessed by the client with the secure version and which is not thus identifying the client.
+  </p>
 
-<p>
-However, some tracking companies abuses this fact by issuing a number of domains and telling every user that a different subset of them are HTTPS-only with HSTS and can check with subset is accessed by the client with the secure version and which is not thus identifying the client.
-</p>
+  <p>
+  Sadly, there is currently no countermesure against this method apart a complete desactivation of HSTS which is a security risk. Browsers doesn't allow this disabling so you can use extensions like this <a href="https://addons.mozilla.org/en-US/firefox/addon/header-editor/" target="_blank">one</a> for Firefox or this <a href="https://chrome.google.com/webstore/detail/modify-headers-for-google/innpjfdalfhpcoinfnehdnbkglpmogdi" target="_blank">one</a> for Chrome to remove the <i>Strict-Transport-Security</i> header on server response.
+  </p>
 
-<p>
-Sadly, there is currently no countermesure against this method apart a complete desactivation of HSTS which is a security risk. Some proposals
-</p>
-
-<p>
-If you want to learn more, we adivse you to consult this <a href="https://www.leviathansecurity.com/blog/the-double-edged-sword-of-hsts-persistence-and-privacy">more detailed explanation</a>.
-</p>
+  <p>
+  If you want to learn more, we adivse you to consult this <a href="https://www.leviathansecurity.com/blog/the-double-edged-sword-of-hsts-persistence-and-privacy">more detailed explanation</a>.
+  </p>
+</section>
 
 <h3 id="etag">ETag Caching</h3>
+<section>
+  <p>
+  ETag is an option in the HTTP protocol to allow server to have a fine control over cache in order to limit bandwidth usage. When providing a ressource like an image, the server will add an header named Etag with an identifiant. Every time the client want to access that ressource, it will join the identifiant to the request so the server can check if the identifiant given by client is up to date. In this case, he will answer that the ressource has not been modified and the client can use the one in its cache. Else he will give the new version and the corresponding identifiant.
+  </p>
 
-<p>
-ETag is an option in the HTTP protocol to allow server to have a fine control over cache in order to limit bandwidth usage. When providing a ressource like an image, the server will add an header named Etag with an identifiant. Every time the client want to access that ressource, it will join the identifiant to the request so the server can check if the identifiant given by client is up to date. In this case, he will answer that the ressource has not been modified and the client can use the one in its cache. Else he will give the new version and the corresponding identifiant.
-</p>
+  <p>
+  A tracking company can include a empty ressource, like a one pixel image, and provide a different ETag value for each user, and using that identifiant to track user.
+  </p>
 
-<p>
-A tracking company can include a empty ressource, like a one pixel image, and provide a different ETag value for each user, and using that identifiant to track user.
-</p>
+  <p>
+  Sadly, there is no criteria for telling if an use of this option is legitimate or used for tracking so the only way to not be tracked with this is to disable the use of ETag by your browser. There is no easy way to do that but you can install some add-ons that modify ETag received by your browser. You can use the same extensions listed for <a href="#hsts">HSTS</a> to remove or alter the <i>If-None-Match</i> header on your requests.
+  </p>
+</section>
 
 <h3 id="redirect">Redirection caching</h3>
+<section>
+  <p>
+  A feature of the web is to allow webmaster to create redirections. It is useful for creating aliases, helping people finding sites after changing its name, create URL shortening services (like <a href="https://bit.ly" target="_blank">bit.ly</a>).
+  It works pretty strait-forwardly : when you try to access a ressource that is to be redirected, the server answers with a special code and the new URL that you should use to access you ressource you requested. Then your browser use that URL and you get what you wanted.
+  </p>
 
-<p>A feature of the web is to allow webmaster to create redirections. It is useful for creating aliases, helping people finding sites after changing its name, create URL shortening services (like <a href="https://bit.ly" target="_blank">bit.ly</a>).
-It works pretty strait-forwardly : when you try to access a ressource that is to be redirected, the server answers with a special code and the new URL that you should use to access you ressource you requested. Then your browser use that URL and you get what you wanted.</p>
+  <p>
+  However, a website can include a content that he will redirect to a user-customized URL and use that customization stored by the browser to remember who the user is.
+  </p>
 
-<p>However, a website can include a content that he will redirect to a user-customized URL and use that customization stored by the browser to remember who the user is.</p>
-
-<p>A countermesure is to clean the redirect cache of your browser or to use the icognito (or privacy) mode, in which most browsers will not use their redirection cache.</p>
+  <p>
+  A countermesure is to clean the redirect cache of your browser or to use the icognito (or privacy) mode, in which most browsers will not use their redirection cache.
+  </p>
+</section>
 
 <h3 id="cookiesync">Cookies syncing</h3>
+<section>
+  <p>
+  Cookies syncing is a way for plateforms to inform each other what an user do online. 
+  </p>
 
-<p>Cookies syncing is more a way for plateforms to inform each other what an user do online. </p>
+  <p>
+  Let's say the website you are visiting is using a third-party, we will call <i>Web Analytics Plateform</i> or WAP for short. Your browser will make a request to the WAP's server, including the third-party cookies that WAP stored on your browser. 
+  But WAP wants to communicate with its partner <i>Digital User Engagement</i>, or DUE for short. However, WAP doesn't know your id in the DUE's system. They know that it is stored in the cookies deposited by DUE on your browser but they can not access these.
+  </p>
 
-<p>Let's say the website you are visiting is using a third-party, we will call <i>Web Analytics Plateform</i> or WAP for short. Your browser will make a request to the WAP's server, including the third-party cookies that WAP stored on your browser. 
-But WAP wants to communicate with its partner <i>Digital User Engagement</i>, or DUE for short. However, WAP doesn't know your id in the DUE's system. They know that it is stored in the cookies deposited by DUE on your browser but they can not access these.</p>
+  <p>
+  To go around this limitation, they will answer to the initial request with a redirect to the DUE's server, with some parameters including the idenfiant they use for you. Your browser will follow this redirection, thus making a request to DUE's servers, with theirs cookies and the parameters set up by WAP. Now DUE has all it needs to fetch WAP data about you.
+  </p>
+  
+  <p>
+  The best way to prevent this, is to prevent any form of tracking in the first place but you can use extensions like <a href="https://github.com/gorhill/uMatrix" target="_blank">uMatrix</a> to block this.
+  </p>
 
-<p>To go around this limitation, they will answer to the initial request with a redirect to the DUE's server, with some parameters including the idenfiant they use for you. Your browser will follow this redirection, thus making a request to DUE's servers, with theirs cookies and the parameters set up by WAP. Now DUE has all it needs to fetch WAP data about you.</p>
-
+</section>
 <%= button_to('Back', root_path, method: :get) %>
