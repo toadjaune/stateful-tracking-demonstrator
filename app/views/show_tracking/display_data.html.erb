@@ -22,9 +22,12 @@
       <% if user_signed_in? %>
         <td> <%= method[:correct] %> </td>
       <% end %>
-      <td> <%= method[:created_at] %> </td>
+      <td> <time><%= method[:created_at] %></time> </td>
       <td> <%= link_to('FAQ', faq_path + method[:shortname], method: :get) %> </td>
     </tr>
   <% end %>
 </table>
+<script>
+for(let o of document.getElementsByTagName("time")) { if(o.innerText) {d = new Date(o.innerText.replace(" UTC",""));o.innerText = d.toLocaleDateString() + " " + d.toLocaleTimeString()}}
+</script>
 <%= button_to('Back', root_path, method: :get) %>
