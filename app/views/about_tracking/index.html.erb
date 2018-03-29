@@ -239,4 +239,95 @@ the website from outside its server. While <strong>first-party</strong> are usua
   </p>
 
 </section>
+
+<h3>So much things to install, I am lost</h3>
+<section>
+  <p>
+  Do not worry, we know it is hard to defend oneself against tracking so advise you to go step by step. Below you will find a spreadsheet telling you how much the protections will impact you and how easy it is to use them.
+  </p>
+
+  <p>
+  Once you made your choice, try to use the protection for a while and after being familiar with it, you can add an another layer.
+  </p>
+
+   <table>
+    <tr>
+      <th>Tracking method</th>
+      <th>Protection</th>
+      <th>UX impact</th>
+      <th>Security impact</th>
+      <th>Ease of use</th>
+    </tr>
+    <tr>
+      <td rowspan=2>Cookies</td>
+      <td>Deletion</td>
+      <td class="orange"></td>
+      <td class="green"></td>
+      <td class="green"></td>
+    </tr>
+    <tr>
+      <td>Whitelist / Blacklist</td>
+      <td class="green"></td>
+      <td class="green"></td>
+      <td class="green"></td>
+    </tr>
+    <tr>
+      <td rowspan=2>Local Storage</td>
+      <td>Disabling</td>
+      <td class="red"></td>
+      <td class="green"></td>
+      <td class="red"></td>
+    </tr>
+    <tr>
+      <td>Limitation</td>
+      <td class="orange"></td>
+      <td class="green"></td>
+      <td class="orange"></td>
+    </tr>
+    <tr>
+      <td>ETag</td>
+      <td>Disabling</td>
+      <td class="green"></td>
+      <td class="green"></td>
+      <td class="green"></td>
+    </tr>
+    <tr>
+      <td rowspan=2>HPKP</td>
+      <td>Disabling</td>
+      <td class="green"></td>
+      <td class="orange"></td>
+      <td class="red"></td>
+    </tr>
+    <tr>
+      <td>Block</td>
+      <td class="green"></td>
+      <td class="green"></td>
+      <td class="green"></td>
+    </tr>
+    <tr>
+      <td rowspan=2>HSTS</td>
+      <td>Disabling</td>
+      <td class="green"></td>
+      <td class="red"></td>
+      <td class="red"></td>
+    </tr>
+    <tr>
+      <td>Block</td>
+      <td class="green"></td>
+      <td class="green"></td>
+      <td class="green"></td>
+    </tr>
+    <tr>
+      <td>Redirect</td>
+      <td>Deleting</td>
+      <td class="orange"></td>
+      <td class="green"></td>
+      <td class="green"></td>
+    </tr>
+   </table>
+
+  <p>
+   Green color means the lesser impact and the easier to use the protection and red means huge impact and expert level, if not outright impossiblity, to use that protection.
+  </p> 
+</section>
 <%= button_to('Back', root_path, method: :get) %>

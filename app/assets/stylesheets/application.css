@@ -39,6 +39,18 @@ section {
   line-height: 22px;
 }
 
+.red {
+  background-color: #e60000;
+}
+
+.orange {
+  background-color: #e68a00;
+}
+
+.green {
+  background-color: #29a329;
+}
+
 .hidden {
 	display: none;
 }
@@ -127,7 +139,6 @@ header ul li.active {
 }
 
 header ul li input[type=submit] {
-  border-radius: 0px;
   font-size: 16px;
   margin-left: 0px;
   margin-right: 0px;
@@ -162,10 +173,11 @@ td, th {
 	padding: 3px 8px;
 }
 
+/*
 tbody tr:hover {
 	background-color: #555555;
 }
-
+*/
 th {
 	border-bottom: 3px solid #666666;
 	padding: 3px 6px;
