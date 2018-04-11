@@ -28,7 +28,15 @@ Should you need it, porting this procedure to another distribution should not be
     * `config/settings.yml`
 * On the client :
   * `mina deploy`
-* TODO : reverse-proxy setup
+* Finally, we set-up our reverse-proxy :
+  * `sudo apt-get install nginx`
+  * Edit nginx-conf.example with path for certificate and put it under the `/etc/nginx/sites-available` directory
+    * If your server has several vhost you may want to do some hostname filtering
+    * You need a wildcard if you plan to enable HPKP tracking
+      * That wildcard *must* be validated from default trust-store since Firefox and Chrome ignore any security exception or user-specific CA and certificate when validating HPKP
+    * If you can not provide a wildcard, your certificate should cover the domain names you listed in `config/settings.yml` in addition of the domains named you intend to provide the service from. 
+  * `ln -s /etc/nginx/sites-available/<vhost_name> /etc/nginx/sites-enabled/`
+  * `systemctl restart nginx`
 
 ### Day-to-day maintenance
 
@@ -55,7 +63,3 @@ For now, it is pretty straightforward :
 * `rails db:migrate` : Run this whenever there's a new db migration
 * `rspec` : Run all tests (the tests are in the spec directory)
 
-# Reverse proxy setup (to automate)
-
-* You need a trusted wildcard, for HPKP
-  * You can't do a self-signed one and just accept a security exception, you need to have a CA sign it, and if it is a self-signed CA, to manually add it to your browser trust store
