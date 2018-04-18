@@ -1,3 +1,15 @@
+# Introduction
+
+Nowadays, it's basically impossible to do anything on the Internet without getting tracked.
+
+This project aims at demonstrating some of the numerous existing tracking methods, without JavaScript (except for LocalStorage, obviously).
+We focus on tracking methods that set some state in the user's browser, to retrieve it later, which excludes any kind of fingerprinting.
+
+You should be able to find a live instance of this project at `tracker.toadjaune.eu`.
+
+Please note that this project initially was a school project, for this reason, we do not plan on making any specific effort to maintain or improve it.
+However, feel free to use it and contribute !
+
 # Installation instructions
 
 These installation instructions are made for a Debian server and client.
@@ -6,6 +18,10 @@ Should you need it, porting this procedure to another distribution should not be
 
 ## For production deployment
 
+Let's admit it, the tool used here for deployment ([mina](https://github.com/mina-deploy/mina)) is not really adapted for a deployment without setting up a full development environment.
+
+Therefore, these instructions may seem quite cumbersome compared to other deployment tools.
+It should however not be too complicated if you have basic comprehension of the Linux ecosystem.
 
 * For production deployment, you need 2 things :
   * A server on which you have ssh access (Debian 9 recommended)
@@ -34,7 +50,7 @@ Should you need it, porting this procedure to another distribution should not be
     * If your server has several vhost you may want to do some hostname filtering
     * You need a wildcard if you plan to enable HPKP tracking
       * That wildcard *must* be validated from default trust-store since Firefox and Chrome ignore any security exception or user-specific CA and certificate when validating HPKP
-    * If you can not provide a wildcard, your certificate should cover the domain names you listed in `config/settings.yml` in addition of the domains named you intend to provide the service from. 
+    * If you can not provide a wildcard, your certificate should cover the domain names you listed in `config/settings.yml` in addition of the domains named you intend to provide the service from.
   * `ln -s /etc/nginx/sites-available/<vhost_name> /etc/nginx/sites-enabled/`
   * `systemctl restart nginx`
 
