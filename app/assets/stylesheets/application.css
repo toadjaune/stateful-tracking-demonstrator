@@ -247,3 +247,8 @@ footer ul li {
 	text-align: center;
   vertical-align: middle;
 }
+
+footer ul li img {
+  display: block;
+  margin: 0 auto;
+}
