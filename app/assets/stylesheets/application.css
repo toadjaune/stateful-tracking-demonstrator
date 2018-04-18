@@ -23,7 +23,7 @@
 }
 
 html, body {
-	min-height: 100%;
+	height: 100%;
 }
 
 body {
@@ -91,6 +91,8 @@ header {
 	font-family: sans-serif;
 	padding-left: 20px;
 }
+
+
 
 #logo-header {
     height: 100%;
@@ -173,11 +175,6 @@ td, th {
 	padding: 3px 8px;
 }
 
-/*
-tbody tr:hover {
-	background-color: #555555;
-}
-*/
 th {
 	border-bottom: 3px solid #666666;
 	padding: 3px 6px;
@@ -224,12 +221,29 @@ a {
 
 /* Footer */
 footer {
-	text-align: center;
-	border-top: solid 1px #dddddd;
-	padding-top: 10px;
-	position: absolute;
-	bottom: 0;
+	bottom : 0;
+  position: absolute;
+  background-color: #444444;
 	width: 100%;
-	height: 40px;
+	height: 60px;
+	font-family: sans-serif;
+	padding-left: 20px;
 }
 
+footer ul {
+  float: right;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	display: inline-block;
+}
+
+footer ul li {
+	display: inline-block;
+	padding-left: 10px;
+	padding-right: 10px;
+	line-height: 30px;
+	text-align: center;
+  vertical-align: middle;
+}
