@@ -16,7 +16,7 @@ require 'mina/rbenv'  # for rbenv support. (https://rbenv.org)
 set :application_name, 'tracker'
 set :domain, 'tracker.toadjaune.eu'
 set :deploy_to, '/home/toadjaune/tracker'
-set :repository, 'git@gitlab.centralesupelec.fr:venturi_arn/projet-tracking-web-back.git'
+set :repository, 'git@github.com:toadjaune/stateful-tracking-demonstrator.git'
 set :branch, 'master'
 
 # Optional settings:

@@ -7,4 +7,4 @@ test:
 production:
   adapter: redis
   url: redis://localhost:6379/1
-  channel_prefix: projet-tracking-web-back_production
+  channel_prefix: stateful-tracking-demonstrator_production
