@@ -15,7 +15,7 @@ Should you need it, porting this procedure to another distribution should not be
 * Then, on the client, we need :
   * git and ruby : `sudo apt-get install git ruby`
   * The mina gem : `sudo gem install mina`
-  * This repo : `git clone git@gitlab.centralesupelec.fr:venturi_arn/projet-tracking-web-back.git` (TODO : change this once we move the repo)
+  * This repo : `git clone https://github.com/toadjaune/stateful-tracking-demonstrator`
   * `cd projet-tracking-web-back`
   * `cp config/deploy.rb.example config/deploy.rb`
   * Change the mina configuration in config/deploy.rb
