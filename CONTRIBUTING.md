@@ -4,7 +4,7 @@ This is a standard Ruby on Rails application.
 
 ## Back
 * Routes can be found `config/routes.rb`
-* Every tracking measure has an own controller in `app/controllers`
+* Every tracking measure has an own model in `app/models`
 
 ## Front
 
